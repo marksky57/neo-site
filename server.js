@@ -3,8 +3,11 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve index.html for all requests
-app.get('*', (req, res) => {
+// Serve static files (images, css, etc)
+app.use(express.static(path.join(__dirname)));
+
+// Always serve index.html
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
