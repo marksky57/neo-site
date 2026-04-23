@@ -3,6 +3,14 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Redirect naked domain to www
+app.use((req, res, next) => {
+  if (req.headers.host === 'neoatyourservice.com') {
+    return res.redirect(301, 'https://www.neoatyourservice.com' + req.url);
+  }
+  next();
+});
+
 // Serve static files (images, css, etc)
 app.use(express.static(path.join(__dirname)));
 
