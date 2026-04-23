@@ -140,30 +140,34 @@
   </header>
 
   <!-- HERO -->
-  <section class="bg-[#0d2340] text-white pt-16 pb-0">
+  <section class="bg-[#0d2340] text-white pt-16 pb-12">
     <div class="container mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
-        <div class="flex-1 pb-12 lg:pb-20">
-          <p class="text-xs font-semibold tracking-widest uppercase text-amber-400/80 mb-5">AI Answering Service</p>
+      <div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
+        
+        <!-- Left: Text + Buttons -->
+        <div class="flex-1">
+          <p class="text-sm font-semibold tracking-widest uppercase text-amber-400/80 mb-5">AI Answering Service</p>
           <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6">Never Miss a Customer Call Again</h1>
-          <p class="text-gray-300 text-xl leading-relaxed mb-10 max-w-xl">Neo answers your business calls and texts around the clock — filtering spam, handling real customers, and making sure every legitimate caller gets a response. No hold music. No missed leads.</p>
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-            <p class="text-gray-400 text-sm mb-3">Choose your plan — both include a 7-day free trial:</p>
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3">
-              <a href="https://buy.stripe.com/4gMcN560u089cP8adG2wU08" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors text-base no-underline">Standard — $29/mo</a>
-              <a href="https://buy.stripe.com/8x2cN5ex05st16q3Pi2wU09" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors text-base no-underline">Pro — $59/mo</a>
-              <a href="#how-it-works" class="text-gray-300 hover:text-white text-sm font-medium transition-colors no-underline whitespace-nowrap">See how it works →</a>
-            </div>
-            <p class="text-gray-500 text-xs">Keep your existing number — forwarding takes 60 seconds</p>
-        </div>
-        <div class="flex-shrink-0 w-full lg:w-auto flex justify-center lg:justify-end pb-0">
-          <div class="relative">
-            <div class="w-64 h-80 md:w-72 md:h-96 rounded-xl overflow-hidden border-2 border-white/10 shadow-2xl">
-              <img alt="Meet Neo — your AI receptionist" class="w-full h-full object-cover object-top" src="/neo-real-portrait.png">
-            </div>
-            <p class="text-center text-gray-400 text-xs mt-2">Meet Neo — your AI receptionist</p>
+          <p class="text-gray-300 text-xl leading-relaxed mb-6 max-w-xl">Neo answers your business calls and texts around the clock — filtering spam, handling real customers, and making sure every legitimate caller gets a response. No hold music. No missed leads.</p>
+          <p class="text-gray-300 text-base mb-6">Choose your plan — both include a <strong class="text-white">7-day free trial:</strong></p>
+          <div class="flex flex-col sm:flex-row items-start gap-4 mb-4">
+            <a href="https://buy.stripe.com/4gMcN560u089cP8adG2wU08" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">Standard — $29/mo</a>
+            <a href="https://buy.stripe.com/8x2cN5ex05st16q3Pi2wU09" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">Pro — $59/mo</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <p class="text-gray-400 text-sm">Keep your existing number — forwarding takes 60 seconds</p>
+            <a href="#how-it-works" class="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors no-underline whitespace-nowrap">See how it works →</a>
           </div>
         </div>
+
+        <!-- Right: Neo Photo -->
+        <div class="flex-shrink-0 flex flex-col items-center">
+          <div class="w-64 h-80 md:w-72 md:h-96 rounded-xl overflow-hidden border-2 border-white/10 shadow-2xl">
+            <img alt="Meet Neo — your AI receptionist" class="w-full h-full object-cover object-top" src="/neo-real-portrait.png">
+          </div>
+          <p class="text-center text-gray-400 text-sm mt-3">Meet Neo — your AI receptionist</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -563,7 +567,7 @@
             </div>
           </div>
           <a id="demo-btn" href="tel:6027825316" class="block w-full text-center bg-amber-500 hover:bg-amber-400 text-[#0d1b2e] font-medium py-4 rounded-xl text-base transition-all hover:-translate-y-px mb-3 no-underline">Hear my demo →</a>
-          <p class="text-xs text-[#8a9bb0] text-center">Call (602) 782-5316 to hear Neo in action. No signup required.</p>
+          <p class="text-xs text-[#8a9bb0] text-center">Call (602) 806-1274 to hear Neo in action. No signup required.</p>
         </div>
       </div>
       <p class="text-center text-gray-400 text-sm mt-6"><span class="text-amber-400 font-semibold">Neo es bilingüe.</span> Háblale en español y te responderá en español.</p>
@@ -696,10 +700,55 @@
       });
     });
 
-    // Demo button — update href with business name
-    document.getElementById('demo-btn').addEventListener('click', function(e) {
-      // Just dial the demo line
-      this.href = 'tel:6027825316';
+    // Demo form — prepare Neo then dial
+    document.getElementById('demo-btn').addEventListener('click', async function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('demo-name').value.trim();
+      const businessName = document.getElementById('demo-business').value.trim();
+      const industry = document.getElementById('demo-industry').value;
+
+      if (!businessName || !industry) {
+        alert('Please enter your business name and select your industry.');
+        return;
+      }
+
+      // Update button state
+      this.textContent = 'Preparing Neo...';
+      this.style.opacity = '0.7';
+      this.style.pointerEvents = 'none';
+
+      try {
+        const response = await fetch('/api/demo/prepare', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, businessName, industry })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          this.textContent = 'Neo is ready — calling now!';
+          setTimeout(() => {
+            window.location.href = 'tel:6028061274';
+            // Reset button after delay
+            setTimeout(() => {
+              this.textContent = 'Hear my demo →';
+              this.style.opacity = '1';
+              this.style.pointerEvents = 'auto';
+            }, 3000);
+          }, 500);
+        } else {
+          throw new Error('Failed to prepare demo');
+        }
+      } catch (error) {
+        console.error('Demo prep error:', error);
+        // Fallback — just dial anyway
+        window.location.href = 'tel:6028061274';
+        this.textContent = 'Hear my demo →';
+        this.style.opacity = '1';
+        this.style.pointerEvents = 'auto';
+      }
     });
   </script>
 
