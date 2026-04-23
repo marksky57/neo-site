@@ -6,13 +6,9 @@
   <title>Neo, At Your Service</title>
   <meta name="description" content="Neo is a smart AI front-line assistant for your business calls and texts. Never miss a customer call again.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f59e0b'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='bold'>N</text></svg>">
-  
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -26,77 +22,29 @@
           container: {
             center: true,
             padding: '1.5rem',
-            screens: {
-              sm: '640px',
-              md: '768px',
-              lg: '1024px',
-              xl: '1200px',
-            }
+            screens: { sm: '640px', md: '768px', lg: '1024px', xl: '1200px' }
           }
         }
       }
     }
   </script>
-  
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  
   <style>
-    body {
-      font-family: 'Source Sans 3', sans-serif;
-    }
+    body { font-family: 'Source Sans 3', sans-serif; }
     .font-playfair { font-family: 'Playfair Display', serif; }
     .font-dm-serif { font-family: 'DM Serif Display', serif; }
-    
-    /* FAQ accordion */
-    .faq-answer-wrapper {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    .faq-item.open .faq-answer-wrapper {
-      max-height: 500px;
-    }
-    .faq-item.open .faq-chevron {
-      transform: rotate(180deg);
-    }
-    .faq-chevron {
-      transition: transform 0.2s ease;
-    }
-    
-    /* Forwarding accordion */
-    .forward-answer-wrapper {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    .forward-item.open .forward-answer-wrapper {
-      max-height: 800px;
-    }
-    .forward-item.open .forward-chevron {
-      transform: rotate(180deg);
-    }
-    .forward-chevron {
-      transition: transform 0.2s ease;
-    }
-
-    /* Mobile menu */
-    #mobile-menu {
-      display: none;
-    }
-    #mobile-menu.open {
-      display: block;
-    }
-    
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Step 5 forwarding section */
-    .even\:bg-gray-50:nth-child(even) {
-      background-color: #f9fafb;
-    }
+    .faq-answer-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-item.open .faq-answer-wrapper { max-height: 500px; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-chevron { transition: transform 0.2s ease; }
+    .forward-answer-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .forward-item.open .forward-answer-wrapper { max-height: 800px; }
+    .forward-item.open .forward-chevron { transform: rotate(180deg); }
+    .forward-chevron { transition: transform 0.2s ease; }
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+    html { scroll-behavior: smooth; }
+    .even\:bg-gray-50:nth-child(even) { background-color: #f9fafb; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col" style="font-family: 'Source Sans 3', sans-serif;">
@@ -124,7 +72,6 @@
         </button>
       </div>
     </div>
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="bg-[#0d2340] border-t border-white/10 px-6 py-4">
       <nav class="flex flex-col gap-4 text-base font-bold text-amber-500">
         <a href="#how-it-works" class="hover:text-amber-300 transition-colors">How It Works</a>
@@ -139,17 +86,19 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="bg-[#0d2340] text-white pt-16 pb-12">
+  <!-- HERO: pt-10 (was pt-16) so content rides higher -->
+  <section class="bg-[#0d2340] text-white pt-10 pb-12">
     <div class="container mx-auto px-6">
       <div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
         
         <!-- Left: Text + Buttons -->
         <div class="flex-1">
-          <p class="text-sm font-semibold tracking-widest uppercase text-amber-400/80 mb-5">AI Answering Service</p>
+          <!-- mb-3 (was mb-5) — tighter gap below label -->
+          <p class="text-sm font-semibold tracking-widest uppercase text-amber-400/80 mb-3">AI Answering Service</p>
           <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6">Never Miss a Customer Call Again</h1>
           <p class="text-gray-300 text-xl leading-relaxed mb-6 max-w-xl">Neo answers your business calls and texts around the clock — filtering spam, handling real customers, and making sure every legitimate caller gets a response. No hold music. No missed leads.</p>
-          <p class="text-gray-300 text-base mb-6">Choose your plan — both include a <strong class="text-white">7-day free trial:</strong></p>
+          <!-- mt-10 (was no top margin) — breathing room above CTA section -->
+          <p class="text-gray-300 text-base mt-10 mb-6">Choose your plan — both include a <strong class="text-white">7-day free trial:</strong></p>
           <div class="flex flex-col sm:flex-row items-start gap-4 mb-4">
             <a href="https://buy.stripe.com/4gMcN560u089cP8adG2wU08" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">Standard — $29/mo</a>
             <a href="https://buy.stripe.com/8x2cN5ex05st16q3Pi2wU09" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">Pro — $59/mo</a>
@@ -160,8 +109,8 @@
           </div>
         </div>
 
-        <!-- Right: Neo Photo -->
-        <div class="flex-shrink-0 flex flex-col items-center">
+        <!-- Right: Neo Photo — self-start pt-1 so top aligns with label line -->
+        <div class="flex-shrink-0 flex flex-col items-center self-start pt-1">
           <div class="w-64 h-80 md:w-72 md:h-96 rounded-xl overflow-hidden border-2 border-white/10 shadow-2xl">
             <img alt="Meet Neo — your AI receptionist" class="w-full h-full object-cover object-top" src="/neo-real-portrait.png">
           </div>
@@ -172,8 +121,8 @@
     </div>
   </section>
 
-  <!-- TAGLINE BAR -->
-  <div class="bg-[#0f2a4a] text-gray-300 text-sm py-3 text-center border-t border-white/5">
+  <!-- TAGLINE BAR: text-base + italic (was text-sm, no italic) -->
+  <div class="bg-[#0f2a4a] text-gray-300 text-base py-3 text-center border-t border-white/5 italic">
     Serving small to medium-size businesses &nbsp;·&nbsp; Trades, medical, general office, and more &nbsp;·&nbsp; Available 24/7
   </div>
 
@@ -205,8 +154,6 @@
           <p class="text-gray-600 text-sm leading-relaxed">Handle callbacks on your schedule. Your customers are taken care of, and no lead falls through the cracks.</p>
         </div>
       </div>
-      
-      <!-- Step 5 - Keep your number -->
       <div class="border border-gray-200 rounded-lg p-5 bg-white forward-item">
         <p class="text-xs text-gray-400 font-medium mb-2">Step 5</p>
         <div class="flex items-start gap-3 mb-2">
@@ -383,7 +330,6 @@
       <h2 class="font-playfair text-3xl md:text-4xl font-bold text-gray-900 mb-10">Common questions about Neo.</h2>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12">
         <div class="divide-y divide-gray-200 border-t border-gray-200">
-          <!-- FAQ items col 1 -->
           <div class="faq-item border-b border-gray-200">
             <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
               <span class="font-semibold text-gray-900 leading-snug group-hover:text-[#0d2340] transition-colors">What does Neo actually do?</span>
@@ -428,7 +374,6 @@
           </div>
         </div>
         <div class="divide-y divide-gray-200 border-t border-gray-200">
-          <!-- FAQ items col 2 -->
           <div class="faq-item border-b border-gray-200">
             <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
               <span class="font-semibold text-gray-900 leading-snug group-hover:text-[#0d2340] transition-colors">Is Neo multilingual?</span>
@@ -484,7 +429,6 @@
       <p class="text-gray-500 text-base mb-2">Each plan includes a one-time setup fee — we build Neo specifically for your business: your greeting, your industry, your call flow. <strong>Standard: $50 setup · Pro: $100 setup.</strong></p>
       <p class="text-gray-400 text-sm mb-8">7-day free trial on every plan. No contracts. Cancel anytime.</p>
       <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
-        <!-- Standard -->
         <div class="bg-white border-2 border-gray-200 rounded-2xl shadow-md overflow-hidden flex flex-col">
           <div class="bg-[#0d1b2e] px-6 py-5">
             <p class="text-amber-400 text-xs font-bold tracking-widest uppercase mb-1">NEO Standard</p>
@@ -507,7 +451,6 @@
             <a href="https://buy.stripe.com/4gMcN560u089cP8adG2wU08" class="block w-full text-center bg-[#0d1b2e] hover:bg-[#152236] text-white font-semibold py-3 rounded-lg transition-colors text-sm no-underline">Start Free 7-Day Trial</a>
           </div>
         </div>
-        <!-- Pro -->
         <div class="bg-white border-2 border-amber-500 rounded-2xl shadow-lg overflow-hidden flex flex-col relative">
           <div class="absolute top-3 right-3 bg-amber-500 text-white text-xs font-bold px-2 py-0.5 rounded-full tracking-wide">MOST POPULAR</div>
           <div class="bg-amber-500 px-6 py-5">
@@ -664,74 +607,53 @@
   </footer>
 
   <script>
-    // Mobile menu toggle
     document.getElementById('menu-toggle').addEventListener('click', function() {
       document.getElementById('mobile-menu').classList.toggle('open');
     });
-
-    // Close mobile menu on link click
     document.querySelectorAll('#mobile-menu a').forEach(function(link) {
       link.addEventListener('click', function() {
         document.getElementById('mobile-menu').classList.remove('open');
       });
     });
-
-    // FAQ accordions
     document.querySelectorAll('.faq-toggle').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var item = this.closest('.faq-item');
         var isOpen = item.classList.contains('open');
-        // Close all
         document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
           openItem.classList.remove('open');
         });
-        // Open clicked if was closed
-        if (!isOpen) {
-          item.classList.add('open');
-        }
+        if (!isOpen) { item.classList.add('open'); }
       });
     });
-
-    // Forwarding accordion
     document.querySelectorAll('.forward-toggle').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var item = this.closest('.forward-item');
         item.classList.toggle('open');
       });
     });
-
-    // Demo form — prepare Neo then dial
     document.getElementById('demo-btn').addEventListener('click', async function(e) {
       e.preventDefault();
-      
       const name = document.getElementById('demo-name').value.trim();
       const businessName = document.getElementById('demo-business').value.trim();
       const industry = document.getElementById('demo-industry').value;
-
       if (!businessName || !industry) {
         alert('Please enter your business name and select your industry.');
         return;
       }
-
-      // Update button state
       this.textContent = 'Preparing Neo...';
       this.style.opacity = '0.7';
       this.style.pointerEvents = 'none';
-
       try {
         const response = await fetch('/api/demo/prepare', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, businessName, industry })
         });
-
         const data = await response.json();
-
         if (data.success) {
           this.textContent = 'Neo is ready — calling now!';
           setTimeout(() => {
             window.location.href = 'tel:6028061274';
-            // Reset button after delay
             setTimeout(() => {
               this.textContent = 'Hear my demo →';
               this.style.opacity = '1';
@@ -743,7 +665,6 @@
         }
       } catch (error) {
         console.error('Demo prep error:', error);
-        // Fallback — just dial anyway
         window.location.href = 'tel:6028061274';
         this.textContent = 'Hear my demo →';
         this.style.opacity = '1';
