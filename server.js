@@ -3,6 +3,8 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const BACKEND_URL = process.env.BACKEND_URL || 'https://neo-backend-production-dbd6.up.railway.app';
+
 // Redirect naked domain to www
 app.use((req, res, next) => {
   if (req.headers.host === 'neoatyourservice.com') {
@@ -22,6 +24,12 @@ app.get('/en', (req, res) => {
 // /es → Spanish site
 app.get('/es', (req, res) => {
   res.sendFile(path.join(__dirname, 'index_es.html'));
+});
+
+// /checkout → proxy to backend checkout form
+app.get('/checkout', (req, res) => {
+  const plan = req.query.plan || 'standard';
+  res.redirect(302, `${BACKEND_URL}/checkout?plan=${plan}`);
 });
 
 // Root → detect browser language, redirect to /en or /es
