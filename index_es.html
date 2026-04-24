@@ -1,1 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Neo, A Su Servicio</title>
+  <meta name="description" content="Neo es un asistente de IA inteligente para las llamadas y mensajes de su negocio. Nunca pierda una llamada de cliente.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f59e0b'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='bold'>N</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'playfair': ['"Playfair Display"', 'serif'],
+            'source': ['"Source Sans 3"', 'sans-serif'],
+            'dm-serif': ['"DM Serif Display"', 'serif'],
+          },
+          container: {
+            center: true,
+            padding: '1.5rem',
+            screens: { sm: '640px', md: '768px', lg: '1024px', xl: '1200px' }
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    body { font-family: 'Source Sans 3', sans-serif; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .font-dm-serif { font-family: 'DM Serif Display', serif; }
+    .faq-answer-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-item.open .faq-answer-wrapper { max-height: 500px; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-chevron { transition: transform 0.2s ease; }
+    .forward-answer-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .forward-item.open .forward-answer-wrapper { max-height: 800px; }
+    .forward-item.open .forward-chevron { transform: rotate(180deg); }
+    .forward-chevron { transition: transform 0.2s ease; }
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+    html { scroll-behavior: smooth; }
+    .even\:bg-gray-50:nth-child(even) { background-color: #f9fafb; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col" style="font-family: 'Source Sans 3', sans-serif;">
 
+  <!-- HEADER -->
+  <header class="bg-[#0d2340] sticky top-0 z-50 border-b border-white/10">
+    <div class="container mx-auto px-6 flex items-center justify-between h-16 gap-6">
+      <a href="#" class="flex items-center gap-2 text-white font-bold text-lg no-underline shrink-0">
+        <span class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-sm font-bold text-white">N</span>
+        <span class="hidden sm:inline">Neo, At Your Service</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-base font-bold text-amber-500">
+        <a href="#how-it-works" class="hover:text-amber-300 transition-colors no-underline">Cómo Funciona</a>
+        <a href="#who-its-for" class="hover:text-amber-300 transition-colors no-underline">Para Quién Es</a>
+        <a href="#spam-free" class="hover:text-amber-300 transition-colors no-underline">Sin Spam</a>
+        <a href="#faq" class="hover:text-amber-300 transition-colors no-underline">Preguntas</a>
+        <a href="#pricing" class="hover:text-amber-300 transition-colors no-underline">Precios</a>
+        <a href="#demo" class="hover:text-amber-300 transition-colors no-underline">Demo</a>
+        <a href="#get-started" class="hover:text-amber-300 transition-colors no-underline">Comenzar</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="/en" class="hidden md:inline-block text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors no-underline">🇺🇸 English</a>
+        <a href="mailto:support@neoatyourservice.com" class="hidden md:inline-block bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold px-4 py-2 rounded transition-colors no-underline">Contáctenos</a>
+        <button id="menu-toggle" class="md:hidden flex items-center justify-center w-9 h-9 text-amber-400 hover:text-amber-300 transition-colors" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="bg-[#0d2340] border-t border-white/10 px-6 py-4">
+      <nav class="flex flex-col gap-4 text-base font-bold text-amber-500">
+        <a href="#how-it-works" class="hover:text-amber-300 transition-colors">Cómo Funciona</a>
+        <a href="#who-its-for" class="hover:text-amber-300 transition-colors">Para Quién Es</a>
+        <a href="#spam-free" class="hover:text-amber-300 transition-colors">Sin Spam</a>
+        <a href="#faq" class="hover:text-amber-300 transition-colors">Preguntas</a>
+        <a href="#pricing" class="hover:text-amber-300 transition-colors">Precios</a>
+        <a href="#demo" class="hover:text-amber-300 transition-colors">Demo</a>
+        <a href="#get-started" class="hover:text-amber-300 transition-colors">Comenzar</a>
+        <a href="mailto:support@neoatyourservice.com" class="bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold px-4 py-2 rounded transition-colors text-center">Contáctenos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-[#0d2340] text-white pt-14 pb-12">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
+        
+        <!-- Left: Text + Buttons -->
+        <div class="flex-1">
+          <!-- mb-3 (was mb-5) — tighter gap below label -->
+          <p class="text-sm font-semibold tracking-widest uppercase text-amber-400/80 mb-3">Servicio de Recepción con IA</p>
+          <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6">Nunca Pierda una Llamada de Cliente</h1>
+          <p class="text-gray-300 text-xl leading-relaxed mb-6 max-w-xl">Neo responde las llamadas y mensajes de su negocio las 24 horas — filtrando spam, atendiendo clientes reales, y asegurando que cada llamada legítima reciba respuesta. Sin música de espera. Sin clientes perdidos.</p>
+          <!-- mt-10 (was no top margin) — breathing room above CTA section -->
+          <p class="text-gray-300 text-base mt-10 mb-6">Elija su plan — ambos incluyen una <strong class="text-white">prueba gratis de 7 días:</strong></p>
+          <div class="flex flex-col sm:flex-row items-start gap-4 mb-4">
+            <a href="https://buy.stripe.com/4gMcN560u089cP8adG2wU08" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">Estándar — $29/mes</a>
+            <a href="https://buy.stripe.com/8x2cN5ex05st16q3Pi2wU09" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">Pro — $59/mes</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <p class="text-gray-400 text-sm">Conserve su número actual — la configuración toma 60 segundos</p>
+            <a href="#how-it-works" class="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors no-underline whitespace-nowrap">Vea cómo funciona →</a>
+          </div>
+        </div>
+
+        <!-- Right: Neo Photo — self-start, no padding, image top flush with row top -->
+        <div class="flex-shrink-0 flex flex-col items-center self-start">
+          <div class="w-64 h-80 md:w-72 md:h-96 rounded-xl overflow-hidden border-2 border-white/10 shadow-2xl">
+            <img alt="Meet Neo — your AI receptionist" class="w-full h-full object-cover object-top" src="/neo-real-portrait.png">
+          </div>
+          <p class="text-center text-gray-400 text-lg mt-3">Conozca a Neo — su recepcionista bilingüe con IA</p>
+          <p class="text-center text-sm mt-1"><a href="/en" class="text-amber-400 hover:text-amber-300 no-underline">in English →</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TAGLINE BAR: text-base + italic (was text-sm, no italic) -->
+  <div class="bg-[#0f2a4a] text-gray-300 text-base py-3 text-center border-t border-white/5 italic">
+    Serving small to medium-size businesses &nbsp;·&nbsp; Trades, medical, general office, and more &nbsp;·&nbsp; Available 24/7
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="py-16 bg-[#0d1b2e]">
+    <div class="container mx-auto px-6">
+      <p class="text-xs font-semibold tracking-widest uppercase text-amber-400/70 mb-3">Cómo Funciona</p>
+      <h2 class="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">Fácil de configurar. Más fácil de usar.</h2>
+      <p class="text-gray-300 text-lg mb-10 max-w-2xl">Neo se conecta a su número de teléfono actual. Cuando un cliente llama o envía un mensaje, Neo lo atiende — de forma profesional y rápida — para que usted pueda enfocarse en su trabajo.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div class="border border-white/10 rounded-lg p-5 bg-white/5">
+          <p class="text-xs text-gray-400 font-medium mb-2">Paso 1</p>
+          <h3 class="font-bold text-white text-base mb-2">Conecte su número</h3>
+          <p class="text-gray-300 text-lg leading-relaxed">Configuramos Neo en su número de teléfono actual. Sin equipo nuevo ni software complicado.</p>
+        </div>
+        <div class="border border-white/10 rounded-lg p-5 bg-white/5">
+          <p class="text-xs text-gray-400 font-medium mb-2">Paso 2</p>
+          <h3 class="font-bold text-white text-base mb-2">Neo responde cada llamada</h3>
+          <p class="text-gray-300 text-lg leading-relaxed">Cuando un cliente llama o escribe, Neo los saluda profesionalmente, responde preguntas comunes y toma un mensaje si es necesario.</p>
+        </div>
+        <div class="border border-white/10 rounded-lg p-5 bg-white/5">
+          <p class="text-xs text-gray-400 font-medium mb-2">Paso 3</p>
+          <h3 class="font-bold text-white text-base mb-2">Usted recibe una notificación</h3>
+          <p class="text-gray-300 text-lg leading-relaxed">Recibe un resumen de cada interacción — quién llamó, qué necesitaba y si requiere seguimiento.</p>
+        </div>
+        <div class="border border-white/10 rounded-lg p-5 bg-white/5">
+          <p class="text-xs text-gray-400 font-medium mb-2">Paso 4</p>
+          <h3 class="font-bold text-white text-base mb-2">Usted devuelve la llamada cuando pueda</h3>
+          <p class="text-gray-300 text-lg leading-relaxed">Devuelva llamadas según su horario. Sus clientes están atendidos y ningún prospecto se pierde.</p>
+        </div>
+      </div>
+      <div class="border border-white/10 rounded-lg p-5 bg-white/5 forward-item">
+        <p class="text-xs text-gray-400 font-medium mb-2">Paso 5</p>
+        <div class="flex items-start gap-3 mb-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500 mt-0.5 shrink-0"><polyline points="18 2 22 6 18 10"></polyline><line x1="14" x2="22" y1="6" y2="6"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <h3 class="font-bold text-white text-base">Conserve su número actual</h3>
+        </div>
+        <p class="text-gray-300 text-lg leading-relaxed mb-3">¿Ya tiene un número que sus clientes conocen? Consérvelo. Solo configure el desvío de llamadas de su número a Neo — toma unos 60 segundos desde su teléfono.</p>
+        <button class="forward-toggle flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="forward-chevron"><path d="m6 9 6 6 6-6"></path></svg>
+          How do I forward my number?
+        </button>
+        <div class="forward-answer-wrapper">
+          <div class="text-sm text-gray-700 space-y-5 pt-4">
+            <p class="font-semibold text-gray-200 mb-2">Your phone carrier handles the forwarding. Here are the codes for the most common carriers — dial from your business phone and replace [Neo number] with the number in your welcome email.</p>
+            <div>
+              <p class="font-bold text-white mb-2">Forward ALL calls to Neo <span class="font-normal text-gray-500">(Neo answers every call, your phone never rings)</span></p>
+              <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse min-w-[480px]">
+                  <thead><tr class="bg-gray-50">
+                    <th class="border border-gray-200 px-3 py-2 text-left font-semibold text-gray-700">Carrier</th>
+                    <th class="border border-gray-200 px-3 py-2 text-left font-semibold text-gray-700">Activate</th>
+                    <th class="border border-gray-200 px-3 py-2 text-left font-semibold text-gray-700">Deactivate</th>
+                  </tr></thead>
+                  <tbody>
+                    <tr class="even:bg-gray-50"><td class="border border-gray-200 px-3 py-2 font-medium">AT&amp;T</td><td class="border border-gray-200 px-3 py-2 font-mono">*21*[Neo number]# then press Call</td><td class="border border-gray-200 px-3 py-2 font-mono">#21# then press Call</td></tr>
+                    <tr class="bg-gray-50"><td class="border border-gray-200 px-3 py-2 font-medium">Verizon</td><td class="border border-gray-200 px-3 py-2 font-mono">*72[Neo number] then press Call</td><td class="border border-gray-200 px-3 py-2 font-mono">*73 then press Call</td></tr>
+                    <tr><td class="border border-gray-200 px-3 py-2 font-medium">T-Mobile</td><td class="border border-gray-200 px-3 py-2 font-mono">**21*[Neo number]# then press Call</td><td class="border border-gray-200 px-3 py-2 font-mono">#21# then press Call</td></tr>
+                    <tr class="bg-gray-50"><td class="border border-gray-200 px-3 py-2 font-medium">Cricket</td><td class="border border-gray-200 px-3 py-2 font-mono">*21*[Neo number]# then press Call</td><td class="border border-gray-200 px-3 py-2 font-mono">#21# then press Call</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div>
+              <p class="font-bold text-white mb-2">Neo answers missed calls only <span class="font-normal text-gray-500">(your phone rings first — Neo catches what you miss)</span></p>
+              <div class="overflow-x-auto">
+                <table class="w-full text-xs border-collapse min-w-[480px]">
+                  <thead><tr class="bg-gray-50">
+                    <th class="border border-gray-200 px-3 py-2 text-left font-semibold text-gray-700">Carrier</th>
+                    <th class="border border-gray-200 px-3 py-2 text-left font-semibold text-gray-700">Activate</th>
+                    <th class="border border-gray-200 px-3 py-2 text-left font-semibold text-gray-700">Deactivate</th>
+                  </tr></thead>
+                  <tbody>
+                    <tr><td class="border border-gray-200 px-3 py-2 font-medium">AT&amp;T</td><td class="border border-gray-200 px-3 py-2 font-mono">*92[Neo number]# then press Call</td><td class="border border-gray-200 px-3 py-2 font-mono">*93# then press Call</td></tr>
+                    <tr class="bg-gray-50"><td class="border border-gray-200 px-3 py-2 font-medium">Verizon</td><td class="border border-gray-200 px-3 py-2 font-mono">*71[Neo number] then press Call</td><td class="border border-gray-200 px-3 py-2 font-mono">*73 then press Call</td></tr>
+                    <tr><td class="border border-gray-200 px-3 py-2 font-medium">T-Mobile</td><td class="border border-gray-200 px-3 py-2 font-mono">**61*[Neo number]# then press Call</td><td class="border border-gray-200 px-3 py-2 font-mono">##61# then press Call</td></tr>
+                    <tr class="bg-gray-50"><td class="border border-gray-200 px-3 py-2 font-medium">Cricket</td><td class="border border-gray-200 px-3 py-2 font-mono">*61*[Neo number]# then press Call</td><td class="border border-gray-200 px-3 py-2 font-mono">#61# then press Call</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <p class="text-gray-500 text-xs">Carrier codes can change without notice. Need help? <a href="mailto:hello@neoatyourservice.com" class="text-amber-600 hover:underline">Email hello@neoatyourservice.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO ITS FOR -->
+  <section id="who-its-for" class="py-16 bg-[#0d2340]">
+    <div class="container mx-auto px-6">
+      <p class="text-xs font-semibold tracking-widest uppercase text-amber-400/70 mb-3">Para Quién Es</p>
+      <h2 class="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">Diseñado para negocios que no pueden perder una llamada.</h2>
+      <p class="text-gray-300 text-lg mb-8 max-w-2xl">Si tiene un pequeño negocio — especialmente en los oficios — a menudo está trabajando, en el camión o en el techo cuando los clientes llaman. Neo asegura que esas llamadas sean atendidas.</p>
+      <div class="flex flex-wrap gap-3">
+        <span class="border border-white/20 text-gray-200 text-base font-medium px-5 py-2.5 rounded">Contratistas de HVAC</span>
+        <span class="border border-white/20 text-gray-200 text-base font-medium px-5 py-2.5 rounded">Plomeros</span>
+        <span class="border border-white/20 text-gray-200 text-base font-medium px-5 py-2.5 rounded">Electricistas</span>
+        <span class="border border-white/20 text-gray-200 text-base font-medium px-5 py-2.5 rounded">Techadores</span>
+        <span class="border border-white/20 text-gray-200 text-base font-medium px-5 py-2.5 rounded">Jardineros</span>
+        <span class="border border-white/20 text-gray-200 text-base font-medium px-5 py-2.5 rounded">Contratistas Generales</span>
+        <span class="border border-white/20 text-gray-200 text-base font-medium px-5 py-2.5 rounded">Control de Plagas</span>
+        <span class="border border-white/20 text-gray-200 text-base font-medium px-5 py-2.5 rounded">Reparación de Electrodomésticos</span>
+        <span class="border border-white/20 text-gray-200 text-base font-medium px-5 py-2.5 rounded">Servicios de Limpieza</span>
+        <span class="border border-white/20 text-gray-200 text-base font-medium px-5 py-2.5 rounded">Cualquier Pequeño Negocio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="py-16 bg-[#0d2340]">
+    <div class="container mx-auto px-6">
+      <p class="text-xs font-semibold tracking-widest uppercase text-amber-400/70 mb-3">Beneficios</p>
+      <h2 class="font-playfair text-3xl md:text-4xl font-bold text-white mb-10">Lo que Neo hace por su negocio.</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div>
+          <div class="text-amber-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+          <h3 class="font-bold text-white text-base mb-2">Nunca pierda un cliente</h3>
+          <p class="text-gray-300 text-lg leading-relaxed">Cada llamada y mensaje recibe respuesta, incluso a las 2 a.m. o durante su día más ocupado. Los clientes se sienten atendidos y usted captura cada oportunidad.</p>
+        </div>
+        <div>
+          <div class="text-amber-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></div>
+          <h3 class="font-bold text-white text-base mb-2">Luzca más profesional</h3>
+          <p class="text-gray-300 text-lg leading-relaxed">Neo saluda a los clientes con el nombre de su negocio y atiende consultas amablemente. Los clientes reciben una experiencia profesional y consistente.</p>
+        </div>
+        <div>
+          <div class="text-amber-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+          <h3 class="font-bold text-white text-base mb-2">Ahorre tiempo en llamadas rutinarias</h3>
+          <p class="text-gray-300 text-lg leading-relaxed">Horarios, direcciones, áreas de servicio, preguntas de precios — Neo maneja lo rutinario para que no lo interrumpan en el trabajo.</p>
+        </div>
+        <div>
+          <div class="text-amber-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
+          <h3 class="font-bold text-white text-base mb-2">Trabaja mientras usted trabaja</h3>
+          <p class="text-gray-300 text-lg leading-relaxed">Usted está en el campo, no en una oficina. Neo trabaja en segundo plano para que pueda enfocarse en lo que realmente paga.</p>
+        </div>
+        <div>
+          <div class="text-amber-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+          <h3 class="font-bold text-white text-base mb-2">Sin emergencias perdidas</h3>
+          <p class="text-gray-300 text-lg leading-relaxed">Neo puede identificar solicitudes urgentes para que sepa cuándo algo requiere su atención inmediata.</p>
+        </div>
+        <div>
+          <div class="text-amber-500 mb-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg></div>
+          <h3 class="font-bold text-white text-base mb-2">Fácil de comenzar</h3>
+          <p class="text-gray-300 text-lg leading-relaxed">Sin configuración complicada. Configuramos Neo para su negocio y estará funcionando rápidamente — sin grandes proyectos de tecnología.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPAM FREE -->
+  <section id="spam-free" class="py-16 bg-[#0d1b2e] text-white">
+    <div class="container mx-auto px-6">
+      <p class="text-xs font-semibold tracking-widest uppercase text-amber-400/80 mb-3">Sin Spam</p>
+      <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-4">Comunicación Sin Spam</h2>
+      <p class="text-gray-300 text-xl mb-2 font-semibold">No le cobramos por spam. Lo bloqueamos.</p>
+      <p class="text-gray-400 text-lg mb-10 max-w-2xl">La mayoría de los servicios le cobran por llamadas basura — robocalls, mensajes automáticos, colgadas silenciosas. Nosotros lo construimos diferente.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-14">
+        <div>
+          <p class="text-amber-400 font-bold text-lg mb-4">✅ El Spam No Es Uso. Es Ruido.</p>
+          <p class="text-gray-300 leading-relaxed mb-5">Nuestra plataforma filtra activamente las llamadas y mensajes de spam antes de que se conviertan en cobros. Si una llamada es spam, se bloquea automáticamente — y nunca se le cobra.</p>
+          <p class="text-gray-400 font-semibold mb-3">Eso significa:</p>
+          <ul class="space-y-2 text-gray-300">
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">—</span> No minutes wasted on robocalls</li>
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">—</span> No alerts for junk calls</li>
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">—</span> No surprise overages from spam traffic</li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-amber-400 font-bold text-lg mb-4">What "Spam Prevention" Actually Means</p>
+          <p class="text-gray-300 leading-relaxed mb-4">No es una lista de bloqueo genérica. Es protección activa y conductual:</p>
+          <ul class="space-y-2 text-gray-300 mb-5">
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">✓</span> Robocalls &amp; ringless voicemail drops stopped automatically</li>
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">✓</span> Silent calls and instant hang‑ups filtered out</li>
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">✓</span> Repeat spam numbers blocked across the network</li>
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">✓</span> Spam texts ignored — not replied to, not billed</li>
+            <li class="flex items-start gap-2"><span class="text-amber-400 mt-0.5">✓</span> Owner notifications only for legitimate calls</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border border-white/10 rounded-xl p-8 mb-10 bg-white/5">
+        <p class="text-amber-400 font-bold text-lg mb-4">✅ Cobro Justo Garantizado</p>
+        <p class="text-gray-300 mb-5">Sus minutos solo se usan cuando un cliente legítimo llega al agente de IA.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center mb-2">
+          <div class="border border-white/10 rounded-lg p-4 bg-white/5">
+            <p class="text-green-400 font-bold text-sm mb-1">✅ Llamadas legítimas</p>
+            <p class="text-gray-400 text-xs">Cuentan hacia sus minutos</p>
+          </div>
+          <div class="border border-white/10 rounded-lg p-4 bg-white/5">
+            <p class="text-red-400 font-bold text-sm mb-1">❌ Llamadas de spam</p>
+            <p class="text-gray-400 text-xs">No cuentan</p>
+          </div>
+          <div class="border border-white/10 rounded-lg p-4 bg-white/5">
+            <p class="text-red-400 font-bold text-sm mb-1">❌ Mensajes de spam</p>
+            <p class="text-gray-400 text-xs">No cuentan</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-16 bg-[#0d2340]">
+    <div class="container mx-auto px-6">
+      <p class="text-xs font-semibold tracking-widest uppercase text-amber-400/70 mb-3">Preguntas</p>
+      <h2 class="font-playfair text-3xl md:text-4xl font-bold text-white mb-10">Preguntas frecuentes sobre Neo.</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12">
+        <div class="divide-y divide-white/10 border-t border-white/10">
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Qué hace Neo exactamente?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">Neo es un asistente inteligente de primera línea para las llamadas y mensajes de su negocio.</p><p class="text-gray-300">Neo responde llamadas antes de que lleguen a usted, bloquea spam, atiende a clientes legítimos profesionalmente, captura mensajes y sigue sus reglas — para que solo se ocupe de lo que importa.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Neo detiene las llamadas de spam?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">Sí. Neo bloquea las llamadas de spam antes de que lleguen a usted.</p><p class="text-gray-300">Neo responde cada llamada primero y usa detección conversacional para identificar robocalls y guiones de ventas. Las llamadas de spam se rechazan sin hacer sonar su teléfono.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Seguirá sonando mi teléfono para llamadas de spam?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">No.</p><p class="text-gray-300">Las llamadas de spam nunca hacen sonar su teléfono ni llegan al buzón de voz. Solo las llamadas legítimas se atienden según su configuración.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Me cobran por llamadas de spam?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">No. El spam no es uso — es ruido.</p><p class="text-gray-300">Si una llamada es identificada como spam, se bloquea automáticamente y nunca se le cobra.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Puedo controlar lo que Neo hace con las llamadas?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">Sí. Usted decide — Neo ejecuta.</p><p class="text-gray-300">Neo responde cada llamada primero, escucha la intención del cliente y aplica sus reglas. Usted controla el horario, la atención fuera de horas, la entrega de mensajes y quién pasa.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Neo trabaja fuera de horario?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">Yes.</p><p class="text-gray-300">Neo sigue su horario comercial y puede manejar llamadas fuera de horario de forma diferente — tomando mensajes, bloqueando llamadas no urgentes o aplicando reglas personalizadas.</p></div></div>
+          </div>
+        </div>
+        <div class="divide-y divide-white/10 border-t border-white/10">
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Neo es multilingüe?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">Yes.</p><p class="text-gray-300">Neo soporta múltiples idiomas. La mayoría de los negocios activan inglés y español, permitiendo que Neo atienda a clientes hispanohablantes profesionalmente y le entregue mensajes en español.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Tengo que hablar inglés si Neo es bilingüe?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">No — para nada.</p><p class="text-gray-300">Neo maneja ambos lados de la conversación. Si un cliente de habla inglesa llama, Neo le habla en inglés y le entrega el mensaje en español. Usted nunca necesita decir una palabra en inglés.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Qué cuenta como minuto facturable?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">Solo las llamadas legítimas cuentan.</p><p class="text-gray-300">Los minutos de su plan solo se usan cuando un cliente real llega al agente de IA. Las llamadas de spam no cuentan. Los mensajes de spam no cuentan.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Neo reemplaza mi sistema telefónico?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">No.</p><p class="text-gray-300">Neo se coloca frente a su sistema telefónico como filtro y asistente. Conserva su número y flujo de trabajo — solo sin el ruido.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Para quién es Neo?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">Cualquier negocio que no puede perder clientes potenciales.</p><p class="text-gray-300">Neo es ideal para pequeños negocios y proveedores de servicios que quieren capturar cada llamada legítima, bloquear spam automáticamente y mantenerse enfocados sin interrupciones constantes.</p></div></div>
+          </div>
+          <div class="faq-item border-b border-white/10">
+            <button class="faq-toggle w-full text-left py-5 flex items-start justify-between gap-4 group">
+              <span class="font-semibold text-white leading-snug group-hover:text-amber-400 transition-colors">¿Qué tan efectiva es la prevención de spam de Neo?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron shrink-0 mt-0.5 text-gray-400"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+            <div class="faq-answer-wrapper"><div class="pb-5"><p class="text-gray-200 font-semibold mb-1">Aproximadamente 99% efectiva.</p><p class="text-gray-300">Neo usa protección activa conductual — no una lista genérica. Debido a las técnicas de spam en constante cambio, ocasionalmente puede pasar alguno, pero cuando sucede, aún no se cobra.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-16 bg-[#0d1b2e]">
+    <div class="container mx-auto px-6">
+      <p class="text-xs font-semibold tracking-widest uppercase text-amber-400/70 mb-3">Precios</p>
+      <h2 class="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">Precios simples y transparentes.</h2>
+      <p class="text-amber-600 text-sm mb-2"><a href="#demo" class="hover:text-amber-700 no-underline font-medium">→ ¿Quiere escuchar a Neo primero? Pruebe el demo en vivo.</a></p>
+      <p class="text-gray-300 text-base mb-2">Cada plan incluye una tarifa única de configuración — construimos Neo específicamente para su negocio: su saludo, su industria, su flujo de llamadas. <strong>Estándar: $50 configuración · Pro: $100 configuración.</strong></p>
+      <p class="text-gray-400 text-sm mb-8">Prueba gratis de 7 días en cada plan. Sin contratos. Cancele cuando quiera.</p>
+      <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+        <div class="bg-white border-2 border-gray-200 rounded-2xl shadow-md overflow-hidden flex flex-col">
+          <div class="bg-[#0d1b2e] px-6 py-5">
+            <p class="text-amber-400 text-xs font-bold tracking-widest uppercase mb-1">NEO Estándar</p>
+            <div class="flex items-end gap-1">
+              <span class="text-white text-4xl font-bold">$29</span>
+              <span class="text-gray-400 text-base mb-1">/mo</span>
+            </div>
+            <p class="text-gray-400 text-sm mt-1">+ $0.30 por minuto &nbsp;·&nbsp; $50 configuración única</p>
+          </div>
+          <div class="px-6 py-5 flex flex-col flex-1">
+            <ul class="space-y-3 text-sm text-gray-700 mb-6 flex-1">
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Respuesta de llamadas 24/7 con el nombre de su negocio</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>$0.30/min — solo cuando Neo habla con un cliente real</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Filtrado de spam — llamadas basura nunca cobradas</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Bilingüe (Inglés + Español)</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Entrega de mensajes por SMS y correo</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Saludo personalizado y flujo de llamadas</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Sin contratos · Cancele cuando quiera</span></li>
+            </ul>
+            <a href="https://buy.stripe.com/4gMcN560u089cP8adG2wU08" class="block w-full text-center bg-[#0d1b2e] hover:bg-[#152236] text-white font-semibold py-3 rounded-lg transition-colors text-sm no-underline">Comenzar Prueba Gratis de 7 Días</a>
+          </div>
+        </div>
+        <div class="bg-white border-2 border-amber-500 rounded-2xl shadow-lg overflow-hidden flex flex-col relative">
+          <div class="absolute top-3 right-3 bg-amber-500 text-white text-xs font-bold px-2 py-0.5 rounded-full tracking-wide">MÁS POPULAR</div>
+          <div class="bg-amber-500 px-6 py-5">
+            <p class="text-white text-xs font-bold tracking-widest uppercase mb-1">NEO Pro</p>
+            <div class="flex items-end gap-1">
+              <span class="text-white text-4xl font-bold">$59</span>
+              <span class="text-amber-100 text-base mb-1">/mo</span>
+            </div>
+            <p class="text-amber-100 text-sm mt-1">+ $0.30 por minuto &nbsp;·&nbsp; $100 configuración única</p>
+          </div>
+          <div class="px-6 py-5 flex flex-col flex-1">
+            <ul class="space-y-3 text-sm text-gray-700 mb-6 flex-1">
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Todo lo de NEO Estándar</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Reserva de citas en su calendario</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>$0.30/min — solo cuando Neo habla con un cliente real</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Filtrado de spam — llamadas basura nunca cobradas</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Bilingüe (Inglés + Español)</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Entrega de mensajes por SMS y correo</span></li>
+              <li class="flex items-start gap-2"><svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Sin contratos · Cancele cuando quiera</span></li>
+            </ul>
+            <a href="https://buy.stripe.com/8x2cN5ex05st16q3Pi2wU09" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 rounded-lg transition-colors text-sm no-underline">Comenzar Prueba Gratis de 7 Días</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section id="demo" class="py-20 bg-[#0d2340]">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col items-center text-center">
+        <p class="text-xs font-medium tracking-widest uppercase text-amber-400 mb-4">Demo en Vivo</p>
+        <h2 class="font-dm-serif text-[clamp(28px,4vw,44px)] font-normal leading-tight mb-3 text-[#f0ede6]">Escuche su negocio.<br>Respondido por Neo.</h2>
+        <p class="text-[15px] text-[#8a9bb0] max-w-md leading-relaxed mb-9">Dos campos. Elija su industria. Escuche una llamada real — con el nombre de su negocio — en segundos.</p>
+        <div class="bg-[#152236] border border-[#1e3050] rounded-2xl p-9 w-full max-w-md text-left">
+          <div class="mb-5">
+            <label class="block text-xs text-[#8a9bb0] mb-2 tracking-wide">Su nombre</label>
+            <input id="demo-name" placeholder="Mike Torres" class="w-full bg-[#0d1b2e] border border-[#1e3050] rounded-xl px-4 py-3 text-[#f0ede6] text-[15px] font-light outline-none focus:border-amber-400 transition-colors placeholder:opacity-60" type="text">
+          </div>
+          <div class="mb-5">
+            <label class="block text-xs text-[#8a9bb0] mb-2 tracking-wide">Nombre del negocio <span class="text-red-400">*</span></label>
+            <input id="demo-business" placeholder="Desert Air HVAC" class="w-full bg-[#0d1b2e] border border-[#1e3050] rounded-xl px-4 py-3 text-[#f0ede6] text-[15px] font-light outline-none focus:border-amber-400 transition-colors placeholder:opacity-60" type="text">
+          </div>
+          <div class="mb-6">
+            <label class="block text-xs text-[#8a9bb0] mb-2 tracking-wide">Su industria <span class="text-red-400">*</span></label>
+            <div class="relative">
+              <select id="demo-industry" class="w-full bg-[#0d1b2e] border border-[#1e3050] rounded-xl px-4 py-3 text-[#f0ede6] text-[15px] font-light outline-none focus:border-amber-400 transition-colors appearance-none cursor-pointer pr-10" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238a9bb0' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 16px center;">
+                <option value="" disabled selected>Seleccione su industria...</option>
+                <option value="hvac" style="background: #0d1b2e;">HVAC</option>
+                <option value="realestate" style="background: #0d1b2e;">Real Estate</option>
+                <option value="plumbing" style="background: #0d1b2e;">Plumbing</option>
+                <option value="roofing" style="background: #0d1b2e;">Roofing</option>
+                <option value="dental" style="background: #0d1b2e;">Dental</option>
+                <option value="legal" style="background: #0d1b2e;">Legal</option>
+                <option value="other" style="background: #0d1b2e;">Other</option>
+              </select>
+            </div>
+          </div>
+          <a id="demo-btn" href="tel:6028061274" class="block w-full text-center bg-amber-500 hover:bg-amber-400 text-[#0d1b2e] font-medium py-4 rounded-xl text-base transition-all hover:-translate-y-px mb-3 no-underline">Escuchar mi demo →</a>
+          <p class="text-base text-[#8a9bb0] text-center">Llame al (602) 806-1274 para escuchar a Neo. No se requiere registro.</p>
+        </div>
+      </div>
+      <p class="text-center text-gray-400 text-sm mt-6"><span class="text-amber-400 font-semibold">Neo es bilingüe.</span> Háblale en español y te responderá en español.</p>
+    </div>
+  </section>
+
+  <!-- GET STARTED -->
+  <section id="get-started" class="py-20 bg-[#0d2340] text-white text-center">
+    <div class="container mx-auto px-6 max-w-2xl">
+      <p class="text-xs font-semibold tracking-widest uppercase text-amber-400 mb-4">Comience Hoy</p>
+      <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-4">Pruebe Neo Gratis por 7 Días</h2>
+      <p class="text-gray-300 text-lg mb-4"><strong class="text-white">NEO Estándar — $29/mes &nbsp;·&nbsp; NEO Pro — $59/mes</strong></p>
+      <p class="text-gray-400 mb-2">$0.30/min · $100 configuración única · Sin contratos · Cancele cuando quiera.</p>
+      <p class="text-gray-400 mb-8">Configuramos Neo específicamente para su negocio — su saludo, su industria, su flujo de llamadas.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://buy.stripe.com/4gMcN560u089cP8adG2wU08" class="bg-white hover:bg-gray-100 text-[#0d2340] font-semibold px-8 py-3 rounded transition-colors text-base no-underline">Estándar — $29/mes</a>
+        <a href="https://buy.stripe.com/8x2cN5ex05st16q3Pi2wU09" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3 rounded transition-colors text-base no-underline">Pro — $59/mes ★</a>
+      </div>
+      <p class="text-gray-400 text-sm mt-6">Preguntas? Escríbanos a <a href="mailto:support@neoatyourservice.com" class="text-amber-400 hover:text-amber-300 no-underline">support@neoatyourservice.com</a></p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="py-16 bg-[#0d1b2e]">
+    <div class="container mx-auto px-6">
+      <p class="text-xs font-semibold tracking-widest uppercase text-amber-400/70 mb-3">Contacto y Soporte</p>
+      <h2 class="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">¿Preguntas? Estamos aquí para ayudar.</h2>
+      <p class="text-gray-300 text-lg mb-8 max-w-xl">Si está interesado en comenzar o necesita ayuda con una cuenta existente, contáctenos. Respondemos a cada mensaje.</p>
+      <div class="border border-white/10 rounded-lg p-6 max-w-lg mb-8">
+        <div class="mb-4">
+          <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Correo Electrónico</p>
+          <a href="mailto:support@neoatyourservice.com?subject=Solicitud de Soporte" class="text-blue-400 hover:underline text-base">support@neoatyourservice.com</a>
+        </div>
+        <div class="mb-4">
+          <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Administrar Facturación</p>
+          <a href="https://billing.stripe.com/p/login/7sYfZh0GadYZ02metW2wU00" target="_blank" class="text-amber-600 hover:underline text-sm">Acceder al portal de facturación →</a>
+        </div>
+        <div>
+          <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Tiempo de Respuesta</p>
+          <p class="text-gray-300 text-sm">Nos esforzamos por responder todas las consultas dentro de un día hábil.</p>
+        </div>
+      </div>
+      <div class="border-l-4 border-white/20 pl-5 max-w-lg">
+        <p class="font-semibold text-white mb-3">Aviso de suscripción SMS</p>
+        <p class="text-gray-300 text-sm leading-relaxed mb-2">Neo, At Your Service envía mensajes SMS solo en respuesta a interacciones de clientes o solicitudes de servicio. El consentimiento se obtiene cuando un cliente contacta un negocio usando Neo o solicita explícitamente comunicación por texto.</p>
+        <p class="text-gray-300 text-sm leading-relaxed mb-2">Responda <strong>STOP</strong> para cancelar en cualquier momento. Responda <strong>HELP</strong> para asistencia.</p>
+        <a href="https://neoatyourservice.com/sms-messaging-policy" class="text-blue-600 hover:underline text-sm">Vea nuestra Política de Mensajes SMS.</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0d2340] text-gray-300 py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-sm font-bold text-white">N</span>
+            <span class="text-white font-bold">Neo, At Your Service</span>
+          </div>
+          <p class="text-sm leading-relaxed text-gray-400">Servicio de recepción con IA para pequeños negocios y profesionales del oficio.</p>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Soporte</p>
+          <div class="flex flex-col gap-2 text-sm">
+            <a href="mailto:support@neoatyourservice.com?subject=Solicitud de Soporte" class="hover:text-white transition-colors text-base">support@neoatyourservice.com</a>
+            <span>neoatyourservice.com</span>
+            <a href="https://billing.stripe.com/p/login/7sYfZh0GadYZ02metW2wU00" target="_blank" class="text-amber-400 hover:text-amber-300 transition-colors">Administrar Facturación</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Legal</p>
+          <div class="flex flex-col gap-2 text-sm">
+            <a href="https://neoatyourservice.com/privacy-policy" class="hover:text-white transition-colors">Política de Privacidad</a>
+            <a href="https://neoatyourservice.com/terms-of-service" class="hover:text-white transition-colors">Términos de Servicio</a>
+            <a href="https://neoatyourservice.com/sms-messaging-policy" class="hover:text-white transition-colors">Política de Mensajes SMS</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Entidad Legal</p>
+          <div class="flex flex-col gap-1 text-sm text-gray-400">
+            <span>ClearLine Answering Services LLC</span>
+            <span>Estado de Formación: Arizona</span>
+            <span>Dirección: Phoenix, Arizona</span>
+            <span>Miembro Gerente: Mark Antonowsky</span>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-6 text-sm text-gray-500">
+        <p class="mb-1">Neo, At Your Service es un servicio operado por ClearLine Answering Services LLC, una compañía de responsabilidad limitada de Arizona.</p>
+        <p>© ClearLine Answering Services LLC. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.remove('open');
+      });
+    });
+    document.querySelectorAll('.faq-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+          openItem.classList.remove('open');
+        });
+        if (!isOpen) { item.classList.add('open'); }
+      });
+    });
+    document.querySelectorAll('.forward-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.closest('.forward-item');
+        item.classList.toggle('open');
+      });
+    });
+    document.getElementById('demo-btn').addEventListener('click', async function(e) {
+      e.preventDefault();
+      const name = document.getElementById('demo-name').value.trim();
+      const businessName = document.getElementById('demo-business').value.trim();
+      const industry = document.getElementById('demo-industry').value;
+      if (!businessName || !industry) {
+        alert('Please enter your business name and select your industry.');
+        return;
+      }
+      this.textContent = 'Preparing Neo...';
+      this.style.opacity = '0.7';
+      this.style.pointerEvents = 'none';
+      try {
+        const response = await fetch('/api/demo/prepare', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, businessName, industry })
+        });
+        const data = await response.json();
+        if (data.success) {
+          this.textContent = 'Neo is ready — calling now!';
+          setTimeout(() => {
+            window.location.href = 'tel:6028061274';
+            setTimeout(() => {
+              this.textContent = 'Hear my demo →';
+              this.style.opacity = '1';
+              this.style.pointerEvents = 'auto';
+            }, 3000);
+          }, 500);
+        } else {
+          throw new Error('Failed to prepare demo');
+        }
+      } catch (error) {
+        console.error('Demo prep error:', error);
+        window.location.href = 'tel:6028061274';
+        this.textContent = 'Hear my demo →';
+        this.style.opacity = '1';
+        this.style.pointerEvents = 'auto';
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
