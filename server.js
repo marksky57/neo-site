@@ -11,12 +11,27 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve static files (images, css, etc)
+// Serve static files (images, etc)
 app.use(express.static(path.join(__dirname)));
 
-// Always serve index.html
-app.get('/', (req, res) => {
+// /en → English site
+app.get('/en', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// /es → Spanish site
+app.get('/es', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index_es.html'));
+});
+
+// Root → detect browser language, redirect to /en or /es
+app.get('/', (req, res) => {
+  const acceptLang = req.headers['accept-language'] || '';
+  const prefersSpanish = acceptLang.toLowerCase().startsWith('es');
+  if (prefersSpanish) {
+    return res.redirect(302, '/es');
+  }
+  return res.redirect(302, '/en');
 });
 
 app.listen(PORT, '0.0.0.0', () => {
