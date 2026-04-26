@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SMS Messaging Policy - Neo At Your Service</title>
+<style>
+body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; }
+h1 { color: #1a202c; font-size: 32px; margin-bottom: 10px; }
+h2 { color: #2d3748; font-size: 22px; margin-top: 30px; margin-bottom: 10px; }
+h3 { color: #4a5568; font-size: 18px; margin-top: 20px; margin-bottom: 8px; }
+p { color: #4a5568; margin-bottom: 12px; }
+ul { margin-left: 25px; color: #4a5568; }
+li { margin-bottom: 8px; }
+strong { font-weight: bold; }
+.header { background: #1a365d; color: white; padding: 20px; margin: -40px -20px 30px -20px; }
+.header h1 { color: white; margin: 0; }
+.contact-box { background: #f7fafc; border: 1px solid #e2e8f0; padding: 15px; margin-top: 15px; }
+.example-box { background: #fffbeb; border: 1px solid #fbbf24; padding: 15px; margin-top: 15px; }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>SMS Messaging Policy</h1>
+<p style="color: #cbd5e0; margin: 5px 0 0 0;">Neo At Your Service - Last updated: April 26, 2026</p>
+</div>
+
+<h2>1. Introduction</h2>
+<p>This SMS Messaging Policy explains how ClearLine Answering Services LLC ("we," "us," or "our") uses text messaging (SMS) as part of the Neo At Your Service ("Neo") platform. By subscribing to Neo, you consent to receive SMS notifications as described in this policy.</p>
+
+<h2>2. Purpose of SMS Notifications</h2>
+<p>Neo sends SMS text messages to provide you with timely notifications about your inbound calls. These messages are transactional in nature and include:</p>
+<ul>
+<li>Links to call recordings</li>
+<li>Links to call transcripts</li>
+<li>Brief summaries of who called and when</li>
+<li>System notifications about your Neo service</li>
+</ul>
+<p>We do not send promotional or marketing messages via SMS unless you separately opt in to receive them.</p>
+
+<h2>3. How SMS Notifications Work</h2>
+<p>After each inbound call to your Neo phone number:</p>
+<ol>
+<li>Neo answers and handles the call using AI</li>
+<li>The call is recorded and transcribed</li>
+<li>An SMS is automatically sent to your registered phone number</li>
+<li>The SMS contains a short link to access the recording and transcript</li>
+</ol>
+
+<h3>Example SMS Messages</h3>
+<div class="example-box">
+<p><strong>Example 1:</strong><br>
+"Call recording ready! Listen here: https://neoatyourservice.com/r/abc123 Reply STOP to opt out or START to resubscribe"</p>
+
+<p style="margin-top: 15px;"><strong>Example 2:</strong><br>
+"New call from John (+16025551234). Recording: https://neoatyourservice.com/r/xyz789 Text STOP to unsubscribe, HELP for assistance"</p>
+
+<p style="margin-top: 15px;"><strong>Example 3:</strong><br>
+"Your call with ABC Plumbing is ready. View recording: https://neoatyourservice.com/r/def456 Reply STOP to opt out"</p>
+</div>
+
+<h2>4. Consent</h2>
+<p>By subscribing to Neo At Your Service, you provide express written consent to receive SMS text messages from us at the phone number you provide during signup. This consent includes:</p>
+<ul>
+<li>Automated SMS notifications about your inbound calls</li>
+<li>Transactional messages related to your Neo service</li>
+<li>System alerts and service updates</li>
+</ul>
+<p>Consent is not a condition of purchasing Neo services, but opting out of SMS means you will not receive instant call notifications via text message. You will still receive email notifications and can access recordings via your account dashboard.</p>
+
+<h2>5. Message Frequency</h2>
+<p>The frequency of SMS messages varies based on the number of inbound calls your Neo number receives. You may receive:</p>
+<ul>
+<li>One SMS per inbound call (after spam filtering)</li>
+<li>Occasional service notifications (rare)</li>
+<li>No maximum limit — frequency depends entirely on your call volume</li>
+</ul>
+<p>On average, businesses receive 5-20 calls per day, resulting in 5-20 SMS notifications.</p>
+
+<h2>6. Message & Data Rates</h2>
+<p>Standard message and data rates may apply according to your mobile carrier's plan. Neo does not charge any fees for SMS delivery beyond your standard Neo subscription.</p>
+<p>Please check with your mobile carrier regarding your messaging plan and any potential charges.</p>
+
+<h2>7. Opt-Out / Unsubscribe</h2>
+<p>You may opt out of SMS notifications at any time by replying with one of the following keywords to any message from Neo:</p>
+<ul>
+<li><strong>STOP</strong> - Immediately unsubscribes you from SMS notifications</li>
+<li><strong>UNSUBSCRIBE</strong> - Same as STOP</li>
+<li><strong>CANCEL</strong> - Same as STOP</li>
+<li><strong>END</strong> - Same as STOP</li>
+<li><strong>QUIT</strong> - Same as STOP</li>
+</ul>
+
+<p>After replying STOP, you will receive one final confirmation message, and then no further SMS notifications will be sent.</p>
+
+<p><strong>Important:</strong> Opting out of SMS does not cancel your Neo subscription. You will continue to be billed according to your subscription plan, and call recordings will remain accessible via:</p>
+<ul>
+<li>Email notifications</li>
+<li>Your Neo account dashboard</li>
+</ul>
+
+<h2>8. Opt-In / Resubscribe</h2>
+<p>If you previously opted out and wish to start receiving SMS notifications again, reply with one of the following keywords:</p>
+<ul>
+<li><strong>START</strong> - Resubscribes you to SMS notifications</li>
+<li><strong>UNSTOP</strong> - Same as START</li>
+</ul>
+
+<p>You will receive a confirmation message, and SMS notifications will resume immediately.</p>
+
+<h2>9. Help</h2>
+<p>For assistance with SMS notifications, reply <strong>HELP</strong> to any message from Neo. You will receive information about how to opt out and contact support.</p>
+
+<p>For additional help, contact us at:</p>
+<ul>
+<li>Email: support@neoatyourservice.com</li>
+<li>Website: neoatyourservice.com</li>
+</ul>
+
+<h2>10. Supported Carriers</h2>
+<p>Neo's SMS notifications are supported by all major U.S. carriers, including but not limited to:</p>
+<ul>
+<li>AT&T</li>
+<li>Verizon</li>
+<li>T-Mobile</li>
+<li>Sprint</li>
+<li>U.S. Cellular</li>
+<li>Cricket Wireless</li>
+<li>MetroPCS</li>
+<li>Boost Mobile</li>
+<li>Virgin Mobile</li>
+</ul>
+
+<h2>11. Privacy and Security</h2>
+<p>We take the privacy and security of your SMS communications seriously:</p>
+<ul>
+<li>We do not share your phone number with third parties for marketing purposes</li>
+<li>SMS messages are sent via Twilio, a trusted and secure messaging platform</li>
+<li>Links in SMS messages are short URLs (e.g., neoatyourservice.com/r/abc123) that redirect to secure HTTPS recording pages</li>
+<li>We track SMS delivery status for troubleshooting purposes only</li>
+</ul>
+<p>For more information about how we handle your data, please see our <a href="/privacy-policy" style="color: #2563eb;">Privacy Policy</a>.</p>
+
+<h2>12. Spam and Abuse Prevention</h2>
+<p>We do not send spam messages. All SMS notifications from Neo are transactional and directly related to your service usage. If you believe you have received a fraudulent message claiming to be from Neo:</p>
+<ul>
+<li>Do not click any links</li>
+<li>Forward the message to support@neoatyourservice.com</li>
+<li>Report the sender to your mobile carrier</li>
+</ul>
+
+<h2>13. Changes to This Policy</h2>
+<p>We may update this SMS Messaging Policy from time to time. We will notify you of material changes by email or through the Neo service. Your continued use of SMS notifications after such changes constitutes your acceptance of the updated policy.</p>
+
+<h2>14. Compliance</h2>
+<p>Our SMS messaging practices comply with:</p>
+<ul>
+<li>Telephone Consumer Protection Act (TCPA)</li>
+<li>CAN-SPAM Act</li>
+<li>CTIA Messaging Principles and Best Practices</li>
+<li>Mobile Marketing Association (MMA) Consumer Best Practices</li>
+<li>Twilio's Acceptable Use Policy</li>
+</ul>
+
+<h2>15. Contact Us</h2>
+<p>If you have questions or concerns about our SMS messaging practices, please contact us:</p>
+<div class="contact-box">
+<p><strong>ClearLine Answering Services LLC</strong><br>
+Email: support@neoatyourservice.com<br>
+Website: neoatyourservice.com</p>
+<p style="margin-top: 12px; font-size: 14px;">ClearLine Answering Services LLC<br>
+State of Formation: Arizona<br>
+Managing Member: Mark Antonowsky</p>
+</div>
+
+<p style="text-align: center; margin-top: 40px; color: #718096; font-size: 14px;">© 2026 ClearLine Answering Services LLC. All rights reserved.</p>
+
+</body>
+</html>
