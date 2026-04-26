@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service - Neo At Your Service</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f59e0b'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='bold'>N</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Source Sans 3', sans-serif; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+  <!-- HEADER -->
+  <header class="bg-[#0d2340] border-b border-white/10">
+    <div class="container mx-auto px-6 flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2 text-white font-bold text-lg no-underline">
+        <span class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-sm font-bold">N</span>
+        <span>Neo, At Your Service</span>
+      </a>
+      <a href="/" class="text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors no-underline">← Back to Home</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 py-12">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h1 class="font-playfair text-4xl md:text-5xl font-bold text-gray-900 mb-4">Terms of Service</h1>
+      <p class="text-gray-600 text-sm mb-8">Last updated: April 26, 2026</p>
+
+      <div class="bg-white rounded-lg shadow-sm p-8 space-y-8">
+        
+        <!-- INTRODUCTION -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">1. Introduction</h2>
+          <p class="text-gray-700 leading-relaxed">Welcome to Neo At Your Service ("Neo," "we," "our," or "us"). These Terms of Service ("Terms") govern your use of our AI-powered answering service. By signing up for or using Neo, you agree to be bound by these Terms. If you do not agree to these Terms, do not use our services.</p>
+        </section>
+
+        <!-- SERVICES -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">2. Description of Services</h2>
+          <p class="text-gray-700 leading-relaxed mb-3">Neo provides an AI-powered phone answering service that:</p>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Answers incoming calls to your business phone number</li>
+            <li>Filters spam calls and messages</li>
+            <li>Handles customer inquiries professionally</li>
+            <li>Provides bilingual support (English and Spanish)</li>
+            <li>Delivers call summaries and messages via SMS and email</li>
+            <li>Offers optional calendar booking and call transfer features (Pro plan)</li>
+          </ul>
+        </section>
+
+        <!-- BILLING AND REFUNDS -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">3. Billing and Refunds</h2>
+          
+          <h3 class="text-xl font-semibold text-gray-900 mt-4 mb-2">Subscription Billing</h3>
+          <p class="text-gray-700 leading-relaxed mb-3">Neo operates on a monthly subscription basis. Your subscription automatically renews on the same day each month until canceled. In addition to your monthly base fee ($29 for Standard, $59 for Pro), you will be charged $0.30 per minute for all legitimate calls handled by Neo.</p>
+
+          <h3 class="text-xl font-semibold text-gray-900 mt-4 mb-2">Setup Fees</h3>
+          <p class="text-gray-700 leading-relaxed mb-3">A one-time setup fee is charged after your free trial ends ($50 for Standard, $100 for Pro). This fee covers the custom configuration of Neo for your specific business, including your greeting, industry-specific knowledge, and call flow setup.</p>
+
+          <h3 class="text-xl font-semibold text-gray-900 mt-4 mb-2">Free Trial</h3>
+          <p class="text-gray-700 leading-relaxed mb-3">New customers receive a 7-day free trial. If you cancel before the trial ends, you will not be charged. If you do not cancel, your subscription will automatically convert to a paid plan and your payment method will be charged.</p>
+
+          <h3 class="text-xl font-semibold text-gray-900 mt-4 mb-2">Cancellation Policy</h3>
+          <p class="text-gray-700 leading-relaxed mb-3">You may cancel your Neo subscription at any time through the Stripe Customer Portal or by contacting support@neoatyourservice.com. Cancellation takes effect at the end of your current billing period. You will retain access to Neo services until the end of your paid period.</p>
+
+          <h3 class="text-xl font-semibold text-gray-900 mt-4 mb-2">No Refunds</h3>
+          <p class="text-gray-700 leading-relaxed mb-3 font-semibold">All payments are final and non-refundable.</p>
+          <p class="text-gray-700 leading-relaxed mb-3">We do not offer refunds or credits for:</p>
+          <ul class="list-disc pl-6 text-gray-700 space-y-1 mb-3">
+            <li>Partial months of service</li>
+            <li>Unused minutes</li>
+            <li>Setup fees</li>
+            <li>Any other charges</li>
+          </ul>
+          <p class="text-gray-700 leading-relaxed mb-3">If you cancel your subscription, you will not receive a refund for the current billing period, but your service will continue until the period ends.</p>
+
+          <h3 class="text-xl font-semibold text-gray-900 mt-4 mb-2">Billing Disputes</h3>
+          <p class="text-gray-700 leading-relaxed">If you believe you have been charged in error, please contact support@neoatyourservice.com within 30 days of the charge. We will review all billing disputes in good faith.</p>
+        </section>
+
+        <!-- SMS NOTIFICATIONS -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">4. SMS Notifications</h2>
+          <p class="text-gray-700 leading-relaxed mb-3">By subscribing to Neo At Your Service, you consent to receive SMS text messages containing links to call recordings and transcripts. These messages are sent automatically after each inbound call to your Neo phone number.</p>
+          
+          <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-3">
+            <li><strong>Message Frequency:</strong> Varies based on call volume</li>
+            <li><strong>Message & Data Rates:</strong> May apply per your carrier</li>
+            <li><strong>Opt-Out:</strong> Reply STOP to any message to unsubscribe</li>
+            <li><strong>Opt-In:</strong> Reply START to any message to resubscribe</li>
+            <li><strong>Help:</strong> Reply HELP for assistance</li>
+          </ul>
+
+          <p class="text-gray-700 leading-relaxed">Opting out of SMS does not cancel your Neo subscription. Call recordings remain accessible via your account dashboard and email notifications.</p>
+        </section>
+
+        <!-- SPAM FILTERING -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">5. Spam Filtering and Billing</h2>
+          <p class="text-gray-700 leading-relaxed mb-3">Neo actively filters spam calls and messages before they become billable. Spam calls are identified through behavioral detection and are blocked or ended automatically.</p>
+          
+          <p class="text-gray-700 leading-relaxed mb-3"><strong>You are never charged for spam.</strong> Only legitimate calls where Neo engages with a real caller count toward your usage minutes. Spam calls and spam text messages do not count.</p>
+          
+          <p class="text-gray-700 leading-relaxed">While our spam prevention is approximately 99% effective, occasional spam may pass through due to constantly evolving spam techniques. Even when spam is not detected, it is still not billed.</p>
+        </section>
+
+        <!-- ACCEPTABLE USE -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">6. Acceptable Use</h2>
+          <p class="text-gray-700 leading-relaxed mb-3">You agree to use Neo only for lawful business purposes. You may not use Neo to:</p>
+          <ul class="list-disc pl-6 text-gray-700 space-y-1">
+            <li>Engage in illegal activities</li>
+            <li>Harass, threaten, or abuse others</li>
+            <li>Transmit spam or unsolicited communications</li>
+            <li>Violate any applicable laws or regulations</li>
+            <li>Impersonate another person or entity</li>
+          </ul>
+        </section>
+
+        <!-- DATA AND PRIVACY -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">7. Data and Privacy</h2>
+          <p class="text-gray-700 leading-relaxed mb-3">Neo collects and processes call data, including call recordings, transcripts, and caller information, to provide our services. Our use of your data is governed by our <a href="/privacy-policy" class="text-blue-600 hover:underline">Privacy Policy</a>.</p>
+          
+          <p class="text-gray-700 leading-relaxed">You are responsible for ensuring that your use of Neo complies with all applicable privacy laws and regulations, including obtaining any necessary consent from your customers for call recording.</p>
+        </section>
+
+        <!-- SERVICE AVAILABILITY -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">8. Service Availability</h2>
+          <p class="text-gray-700 leading-relaxed mb-3">We strive to provide 24/7 service availability. However, we do not guarantee uninterrupted or error-free service. Neo may be temporarily unavailable due to:</p>
+          <ul class="list-disc pl-6 text-gray-700 space-y-1">
+            <li>Scheduled maintenance</li>
+            <li>System upgrades</li>
+            <li>Technical difficulties</li>
+            <li>Circumstances beyond our reasonable control</li>
+          </ul>
+        </section>
+
+        <!-- LIMITATION OF LIABILITY -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">9. Limitation of Liability</h2>
+          <p class="text-gray-700 leading-relaxed mb-3">To the maximum extent permitted by law, Neo At Your Service and ClearLine Answering Services LLC shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:</p>
+          <ul class="list-disc pl-6 text-gray-700 space-y-1 mb-3">
+            <li>Loss of profits or revenue</li>
+            <li>Loss of business opportunities</li>
+            <li>Missed calls or messages</li>
+            <li>Data loss</li>
+            <li>Service interruptions</li>
+          </ul>
+          
+          <p class="text-gray-700 leading-relaxed">Our total liability to you for any claims arising from or related to these Terms or our services shall not exceed the amount you paid to us in the twelve (12) months preceding the claim.</p>
+        </section>
+
+        <!-- INTELLECTUAL PROPERTY -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">10. Intellectual Property</h2>
+          <p class="text-gray-700 leading-relaxed">All intellectual property rights in Neo, including but not limited to software, technology, branding, and content, are owned by ClearLine Answering Services LLC. You are granted a limited, non-exclusive, non-transferable license to use our services for your business purposes only.</p>
+        </section>
+
+        <!-- TERMINATION -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">11. Termination</h2>
+          <p class="text-gray-700 leading-relaxed mb-3">We reserve the right to suspend or terminate your access to Neo at any time, with or without cause, including but not limited to:</p>
+          <ul class="list-disc pl-6 text-gray-700 space-y-1 mb-3">
+            <li>Violation of these Terms</li>
+            <li>Non-payment of fees</li>
+            <li>Fraudulent or abusive use of our services</li>
+            <li>Any conduct that we determine, in our sole discretion, is harmful to our business or other users</li>
+          </ul>
+          
+          <p class="text-gray-700 leading-relaxed">Upon termination, you will lose access to all recordings, transcripts, and other data stored in your account. We are not responsible for preserving such data after termination.</p>
+        </section>
+
+        <!-- CHANGES TO TERMS -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">12. Changes to Terms</h2>
+          <p class="text-gray-700 leading-relaxed">We reserve the right to modify these Terms at any time. We will notify you of material changes by email or through the Neo service. Your continued use of Neo after such changes constitutes your acceptance of the new Terms.</p>
+        </section>
+
+        <!-- GOVERNING LAW -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">13. Governing Law</h2>
+          <p class="text-gray-700 leading-relaxed">These Terms shall be governed by and construed in accordance with the laws of the State of Arizona, United States, without regard to its conflict of law provisions. Any disputes arising from these Terms or our services shall be resolved in the courts located in Maricopa County, Arizona.</p>
+        </section>
+
+        <!-- CONTACT -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">14. Contact Information</h2>
+          <p class="text-gray-700 leading-relaxed mb-2">If you have any questions about these Terms, please contact us:</p>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <p class="text-gray-700"><strong>ClearLine Answering Services LLC</strong></p>
+            <p class="text-gray-700">Email: <a href="mailto:support@neoatyourservice.com" class="text-blue-600 hover:underline">support@neoatyourservice.com</a></p>
+            <p class="text-gray-700">Website: <a href="https://neoatyourservice.com" class="text-blue-600 hover:underline">neoatyourservice.com</a></p>
+            <p class="text-gray-700 mt-2 text-sm">ClearLine Answering Services LLC<br>State of Formation: Arizona<br>Managing Member: Mark Antonowsky</p>
+          </div>
+        </section>
+
+        <!-- ENTIRE AGREEMENT -->
+        <section>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3">15. Entire Agreement</h2>
+          <p class="text-gray-700 leading-relaxed">These Terms, together with our Privacy Policy and SMS Messaging Policy, constitute the entire agreement between you and ClearLine Answering Services LLC regarding the use of Neo services.</p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0d2340] text-gray-300 py-8 mt-12">
+    <div class="container mx-auto px-6 text-center">
+      <p class="text-sm">© 2026 ClearLine Answering Services LLC. All rights reserved.</p>
+      <div class="flex justify-center gap-6 mt-4 text-sm">
+        <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="/terms-of-service" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="/sms-messaging-policy" class="hover:text-white transition-colors">SMS Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
