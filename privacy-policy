@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Privacy Policy - Neo At Your Service</title>
+<style>
+body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; }
+h1 { color: #1a202c; font-size: 32px; margin-bottom: 10px; }
+h2 { color: #2d3748; font-size: 22px; margin-top: 30px; margin-bottom: 10px; }
+h3 { color: #4a5568; font-size: 18px; margin-top: 20px; margin-bottom: 8px; }
+p { color: #4a5568; margin-bottom: 12px; }
+ul { margin-left: 25px; color: #4a5568; }
+li { margin-bottom: 8px; }
+strong { font-weight: bold; }
+.header { background: #1a365d; color: white; padding: 20px; margin: -40px -20px 30px -20px; }
+.header h1 { color: white; margin: 0; }
+.contact-box { background: #f7fafc; border: 1px solid #e2e8f0; padding: 15px; margin-top: 15px; }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>Privacy Policy</h1>
+<p style="color: #cbd5e0; margin: 5px 0 0 0;">Neo At Your Service - Last updated: April 26, 2026</p>
+</div>
+
+<h2>1. Introduction</h2>
+<p>ClearLine Answering Services LLC ("we," "us," or "our") operates Neo At Your Service ("Neo"), an AI-powered phone answering service. This Privacy Policy explains how we collect, use, disclose, and protect your information when you use our services.</p>
+<p>By using Neo, you agree to the collection and use of information in accordance with this Privacy Policy. If you do not agree with our policies and practices, do not use our services.</p>
+
+<h2>2. Information We Collect</h2>
+
+<h3>2.1 Information You Provide</h3>
+<p>We collect information that you provide directly to us when you:</p>
+<ul>
+<li>Create an account or subscribe to Neo</li>
+<li>Configure your Neo service settings</li>
+<li>Contact our customer support</li>
+<li>Communicate with us in any way</li>
+</ul>
+<p>This information may include:</p>
+<ul>
+<li>Name and contact information (email address, phone number, business name)</li>
+<li>Billing and payment information (processed securely through Stripe)</li>
+<li>Business information (industry, services offered, operating hours)</li>
+<li>Custom greeting scripts and business-specific knowledge</li>
+</ul>
+
+<h3>2.2 Information We Collect Automatically</h3>
+<p>When you use Neo, we automatically collect:</p>
+<ul>
+<li><strong>Call Data:</strong> Phone numbers (caller and recipient), call duration, date and time, call recordings, and transcripts</li>
+<li><strong>Usage Data:</strong> Number of calls handled, spam calls filtered, service usage patterns</li>
+<li><strong>Technical Data:</strong> IP addresses, device information, browser type, operating system</li>
+<li><strong>SMS Delivery Data:</strong> SMS delivery status, opt-in/opt-out preferences</li>
+</ul>
+
+<h3>2.3 Call Recordings and Transcripts</h3>
+<p>Neo records and transcribes all incoming calls to your Neo phone number. These recordings and transcripts are:</p>
+<ul>
+<li>Stored securely in our systems</li>
+<li>Made available to you via SMS links, email, and your account dashboard</li>
+<li>Retained for the duration of your subscription plus 30 days after cancellation</li>
+<li>Used to improve our AI service quality and spam detection</li>
+</ul>
+
+<h2>3. How We Use Your Information</h2>
+<p>We use the information we collect to:</p>
+<ul>
+<li><strong>Provide Our Services:</strong> Answer calls, filter spam, deliver call summaries, and provide transcripts</li>
+<li><strong>Process Payments:</strong> Bill for services through our payment processor (Stripe)</li>
+<li><strong>Send Notifications:</strong> Deliver SMS and email notifications about calls, recordings, and account activity</li>
+<li><strong>Customer Support:</strong> Respond to your questions and provide technical assistance</li>
+<li><strong>Service Improvement:</strong> Analyze usage patterns to improve AI performance, spam detection, and user experience</li>
+<li><strong>Comply with Legal Obligations:</strong> Respond to lawful requests and prevent fraud or abuse</li>
+</ul>
+
+<h2>4. How We Share Your Information</h2>
+<p>We do not sell your personal information. We may share your information in the following circumstances:</p>
+
+<h3>4.1 Service Providers</h3>
+<p>We share information with third-party service providers who perform services on our behalf:</p>
+<ul>
+<li><strong>Vapi:</strong> AI phone service platform (call handling and routing)</li>
+<li><strong>ElevenLabs:</strong> Voice synthesis for AI responses</li>
+<li><strong>Deepgram:</strong> Speech recognition and transcription</li>
+<li><strong>Twilio:</strong> Phone number provisioning and SMS delivery</li>
+<li><strong>Stripe:</strong> Payment processing</li>
+<li><strong>Railway:</strong> Cloud hosting infrastructure</li>
+<li><strong>Anthropic:</strong> AI language model (Claude) for call handling logic</li>
+</ul>
+<p>These service providers are contractually required to protect your information and use it only for the purposes for which it was disclosed.</p>
+
+<h3>4.2 Legal Requirements</h3>
+<p>We may disclose your information if required to do so by law or in response to valid requests by public authorities (e.g., a court or government agency).</p>
+
+<h3>4.3 Business Transfers</h3>
+<p>If we are involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction. We will notify you before your information is transferred and becomes subject to a different privacy policy.</p>
+
+<h2>5. Data Security</h2>
+<p>We implement appropriate technical and organizational security measures to protect your information against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
+<ul>
+<li>Encryption of data in transit and at rest</li>
+<li>Secure cloud hosting infrastructure</li>
+<li>Access controls and authentication</li>
+<li>Regular security assessments</li>
+</ul>
+<p>However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee its absolute security.</p>
+
+<h2>6. Data Retention</h2>
+<p>We retain your information for as long as necessary to provide our services and comply with legal obligations:</p>
+<ul>
+<li><strong>Account Information:</strong> Duration of your subscription</li>
+<li><strong>Call Recordings and Transcripts:</strong> Duration of your subscription plus 30 days after cancellation</li>
+<li><strong>Billing Records:</strong> 7 years (for tax and legal compliance)</li>
+<li><strong>Usage Logs:</strong> 90 days</li>
+</ul>
+<p>You may request deletion of your data by contacting support@neoatyourservice.com. Note that we may retain certain information as required by law or for legitimate business purposes.</p>
+
+<h2>7. Your Rights and Choices</h2>
+
+<h3>7.1 Access and Correction</h3>
+<p>You may access, update, or correct your account information at any time through your account settings or by contacting us.</p>
+
+<h3>7.2 Data Portability</h3>
+<p>You may request a copy of your call recordings and transcripts in a machine-readable format.</p>
+
+<h3>7.3 Deletion</h3>
+<p>You may request deletion of your account and associated data. Note that some information may be retained as required by law.</p>
+
+<h3>7.4 SMS Opt-Out</h3>
+<p>You may opt out of SMS notifications at any time by replying STOP to any message. You can opt back in by replying START.</p>
+
+<h3>7.5 Marketing Communications</h3>
+<p>You may opt out of promotional emails by clicking the "unsubscribe" link in any marketing email.</p>
+
+<h2>8. Call Recording Consent</h2>
+<p><strong>Important:</strong> You are responsible for ensuring that your use of Neo complies with all applicable call recording laws and regulations in your jurisdiction. This may include:</p>
+<ul>
+<li>Obtaining consent from callers before recording</li>
+<li>Providing notice that calls may be recorded</li>
+<li>Complying with two-party consent laws where applicable</li>
+</ul>
+<p>Neo provides tools to announce call recording (e.g., "This call may be recorded"), but you are ultimately responsible for legal compliance in your jurisdiction.</p>
+
+<h2>9. Children's Privacy</h2>
+<p>Neo is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have collected information from a child, please contact us immediately.</p>
+
+<h2>10. International Data Transfers</h2>
+<p>Your information may be transferred to and processed in the United States and other countries where our service providers operate. These countries may have data protection laws that differ from those in your country of residence. By using Neo, you consent to the transfer of your information to these countries.</p>
+
+<h2>11. Third-Party Links</h2>
+<p>Our service may contain links to third-party websites or services. We are not responsible for the privacy practices of these third parties. We encourage you to read their privacy policies.</p>
+
+<h2>12. Changes to This Privacy Policy</h2>
+<p>We may update this Privacy Policy from time to time. We will notify you of material changes by email or through the Neo service. Your continued use of Neo after such changes constitutes your acceptance of the updated Privacy Policy.</p>
+
+<h2>13. California Privacy Rights</h2>
+<p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA):</p>
+<ul>
+<li>Right to know what personal information we collect, use, and disclose</li>
+<li>Right to request deletion of your personal information</li>
+<li>Right to opt out of the sale of your personal information (note: we do not sell personal information)</li>
+<li>Right to non-discrimination for exercising your privacy rights</li>
+</ul>
+<p>To exercise these rights, contact us at support@neoatyourservice.com.</p>
+
+<h2>14. Contact Us</h2>
+<p>If you have questions or concerns about this Privacy Policy or our data practices, please contact us:</p>
+<div class="contact-box">
+<p><strong>ClearLine Answering Services LLC</strong><br>
+Email: support@neoatyourservice.com<br>
+Website: neoatyourservice.com</p>
+<p style="margin-top: 12px; font-size: 14px;">ClearLine Answering Services LLC<br>
+State of Formation: Arizona<br>
+Managing Member: Mark Antonowsky</p>
+</div>
+
+<p style="text-align: center; margin-top: 40px; color: #718096; font-size: 14px;">© 2026 ClearLine Answering Services LLC. All rights reserved.</p>
+
+</body>
+</html>
