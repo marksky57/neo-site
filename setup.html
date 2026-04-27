@@ -1,0 +1,531 @@
+<!-- setup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Set Up Your Neo — Neo, At Your Service</title>
+  <meta name="description" content="Complete your Neo setup. Tell us about your business so we can configure your AI receptionist perfectly.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f59e0b'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='bold'>N</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{'playfair':['"Playfair Display"','serif'],'source':['"Source Sans 3"','sans-serif']},container:{center:true,padding:'1.5rem',screens:{sm:'640px',md:'768px',lg:'1024px',xl:'1200px'}}}}}</script>
+  <style>
+    body { font-family: 'Source Sans 3', sans-serif; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 600; color: #cbd5e0; margin-bottom: 6px; }
+    .form-input { width: 100%; background: #0d1b2e; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 12px 16px; color: white; font-size: 15px; outline: none; transition: border-color 0.2s; }
+    .form-input:focus { border-color: #f59e0b; }
+    .form-input::placeholder { color: #4a5568; }
+    .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238a9bb0' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; cursor: pointer; }
+    .form-textarea { resize: vertical; min-height: 100px; }
+    .section-header { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 24px; }
+    .section-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: #f59e0b; border-radius: 50%; color: white; font-weight: bold; font-size: 13px; margin-right: 10px; }
+    .pro-badge { display: inline-block; background: rgba(245,158,11,0.2); color: #f59e0b; font-size: 11px; font-weight: bold; padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+    .checkbox-group { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; cursor: pointer; }
+    .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; accent-color: #f59e0b; cursor: pointer; flex-shrink: 0; }
+    .checkbox-group label { color: #cbd5e0; font-size: 14px; cursor: pointer; line-height: 1.4; }
+    .radio-group { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; cursor: pointer; transition: border-color 0.2s; }
+    .radio-group:hover { border-color: rgba(245,158,11,0.4); }
+    .radio-group input[type="radio"] { width: 18px; height: 18px; accent-color: #f59e0b; cursor: pointer; flex-shrink: 0; margin-top: 2px; }
+    .radio-group label { color: #cbd5e0; font-size: 14px; cursor: pointer; line-height: 1.5; }
+    .radio-group label strong { color: white; display: block; margin-bottom: 2px; }
+    #success-message { display: none; }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0d2340]">
+
+  <!-- HEADER -->
+  <header class="bg-[#0d2340] border-b border-white/10">
+    <div class="container mx-auto px-6 flex items-center h-16">
+      <a href="/" class="flex items-center gap-2 text-white font-bold text-lg no-underline">
+        <span class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-sm font-bold text-white">N</span>
+        <span>Neo, At Your Service</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="bg-[#0d2340] py-12 border-b border-white/10">
+    <div class="container mx-auto px-6 max-w-3xl text-center">
+      <p class="text-amber-400 text-xs font-bold tracking-widest uppercase mb-3">Setup Form</p>
+      <h1 class="font-playfair text-4xl md:text-5xl font-bold text-white mb-4">Let's Build Your Neo</h1>
+      <p class="text-gray-300 text-lg max-w-xl mx-auto">Tell us about your business and how you'd like calls handled. This takes about 5 minutes and helps us configure Neo perfectly for {{biz_name}}.</p>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="container mx-auto px-6 max-w-3xl py-12">
+    <form id="setup-form" action="/api/setup" method="POST">
+
+      <!-- Hidden fields -->
+      <input type="hidden" name="customer_id" value="{{customer_id}}">
+      <input type="hidden" name="plan" value="{{plan}}">
+
+      <!-- SECTION 1: BUSINESS BASICS -->
+      <div class="mb-10">
+        <div class="section-header">
+          <h2 class="text-white text-xl font-bold">
+            <span class="section-number">1</span>
+            Business Basics
+          </h2>
+        </div>
+        <div class="space-y-5">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label">Business Name <span class="text-red-400">*</span></label>
+              <input type="text" name="biz_name" class="form-input" placeholder="Desert Air HVAC" required>
+            </div>
+            <div>
+              <label class="form-label">Industry / Trade <span class="text-red-400">*</span></label>
+              <select name="industry" class="form-input form-select" required>
+                <option value="" disabled selected>Select your industry...</option>
+                <option value="hvac">HVAC</option>
+                <option value="plumbing">Plumbing</option>
+                <option value="electrical">Electrical</option>
+                <option value="roofing">Roofing</option>
+                <option value="landscaping">Landscaping</option>
+                <option value="general_contractor">General Contractor</option>
+                <option value="pest_control">Pest Control</option>
+                <option value="appliance_repair">Appliance Repair</option>
+                <option value="cleaning">Cleaning Services</option>
+                <option value="real_estate">Real Estate</option>
+                <option value="dental">Dental</option>
+                <option value="medical">Medical / Healthcare</option>
+                <option value="legal">Legal</option>
+                <option value="insurance">Insurance</option>
+                <option value="financial">Financial Services</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label">City / Service Area <span class="text-red-400">*</span></label>
+              <input type="text" name="service_area" class="form-input" placeholder="Phoenix, AZ and surrounding areas" required>
+            </div>
+            <div>
+              <label class="form-label">Your Callback Number <span class="text-red-400">*</span></label>
+              <input type="tel" name="callback_number" class="form-input" placeholder="(602) 555-1234" required>
+            </div>
+          </div>
+
+          <div>
+            <label class="form-label">What services do you offer? <span class="text-red-400">*</span></label>
+            <textarea name="services" class="form-input form-textarea" placeholder="e.g. AC repair, installation, maintenance, heating systems, emergency service..." required></textarea>
+            <p class="text-gray-500 text-xs mt-1">Be specific — Neo will use this to answer customer questions about your services.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 2: HOW TO ANSWER CALLS -->
+      <div class="mb-10">
+        <div class="section-header">
+          <h2 class="text-white text-xl font-bold">
+            <span class="section-number">2</span>
+            How Should Neo Answer Your Calls?
+          </h2>
+        </div>
+        <div class="space-y-5">
+
+          <div>
+            <label class="form-label">Greeting Style <span class="text-red-400">*</span></label>
+            <div class="space-y-3">
+              <div class="radio-group">
+                <input type="radio" name="greeting_style" value="professional" id="greeting_professional" required>
+                <label for="greeting_professional">
+                  <strong>Professional & Formal</strong>
+                  "Thank you for calling Desert Air HVAC. This is Neo, how may I assist you today?"
+                </label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="greeting_style" value="friendly" id="greeting_friendly">
+                <label for="greeting_friendly">
+                  <strong>Friendly & Warm</strong>
+                  "Hi, thanks for calling Desert Air HVAC! How can I help you today?"
+                </label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="greeting_style" value="custom" id="greeting_custom">
+                <label for="greeting_custom">
+                  <strong>Custom Greeting</strong>
+                  I'll write my own greeting below
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div id="custom-greeting-field" class="hidden">
+            <label class="form-label">Your Custom Greeting</label>
+            <textarea name="custom_greeting" class="form-input form-textarea" placeholder="Write exactly how you'd like Neo to greet callers..."></textarea>
+          </div>
+
+          <div>
+            <label class="form-label">Business Hours <span class="text-red-400">*</span></label>
+            <input type="text" name="business_hours" class="form-input" placeholder="Mon-Fri 7am-6pm, Sat 8am-2pm, closed Sundays" required>
+          </div>
+
+          <div>
+            <label class="form-label">After Hours Handling <span class="text-red-400">*</span></label>
+            <div class="space-y-3">
+              <div class="radio-group">
+                <input type="radio" name="after_hours" value="take_message" id="after_message" required>
+                <label for="after_message">
+                  <strong>Take a message</strong>
+                  Neo lets them know you're closed and takes their name, number, and reason for calling
+                </label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="after_hours" value="emergency_only" id="after_emergency">
+                <label for="after_emergency">
+                  <strong>Emergency calls only</strong>
+                  Neo screens for emergencies and takes messages for everything else
+                </label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="after_hours" value="always_available" id="after_always">
+                <label for="after_always">
+                  <strong>Same as business hours</strong>
+                  Neo handles all calls the same way 24/7
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="form-label">Preferred Language(s) <span class="text-red-400">*</span></label>
+            <div class="space-y-2">
+              <div class="checkbox-group">
+                <input type="checkbox" name="languages" value="english" id="lang_english" checked>
+                <label for="lang_english">English</label>
+              </div>
+              <div class="checkbox-group">
+                <input type="checkbox" name="languages" value="spanish" id="lang_spanish">
+                <label for="lang_spanish">Spanish (Neo will answer Spanish-speaking callers in Spanish)</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 3: KEY QUESTIONS TO ASK -->
+      <div class="mb-10">
+        <div class="section-header">
+          <h2 class="text-white text-xl font-bold">
+            <span class="section-number">3</span>
+            Key Questions to Ask Callers
+          </h2>
+        </div>
+        <div class="space-y-5">
+
+          <p class="text-gray-400 text-sm">When a customer calls, what information does Neo need to collect? Check all that apply.</p>
+
+          <div class="space-y-2">
+            <div class="checkbox-group">
+              <input type="checkbox" name="collect_info" value="name" id="collect_name" checked>
+              <label for="collect_name">Full name</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" name="collect_info" value="phone" id="collect_phone" checked>
+              <label for="collect_phone">Callback phone number</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" name="collect_info" value="address" id="collect_address">
+              <label for="collect_address">Service address</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" name="collect_info" value="issue" id="collect_issue" checked>
+              <label for="collect_issue">Description of the issue / reason for calling</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" name="collect_info" value="urgency" id="collect_urgency">
+              <label for="collect_urgency">Urgency level (emergency vs. routine)</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" name="collect_info" value="best_time" id="collect_time">
+              <label for="collect_time">Best time to call back</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" name="collect_info" value="existing_customer" id="collect_existing">
+              <label for="collect_existing">Whether they're an existing or new customer</label>
+            </div>
+          </div>
+
+          <div>
+            <label class="form-label">Any other specific questions Neo should ask?</label>
+            <textarea name="custom_questions" class="form-input form-textarea" placeholder="e.g. What brand is your AC unit? When was your last service? How did you hear about us?"></textarea>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 4: KNOWLEDGE BASE -->
+      <div class="mb-10">
+        <div class="section-header">
+          <h2 class="text-white text-xl font-bold">
+            <span class="section-number">4</span>
+            Business Knowledge Base
+          </h2>
+        </div>
+        <div class="space-y-5">
+
+          <p class="text-gray-400 text-sm">Help Neo answer common customer questions accurately.</p>
+
+          <div>
+            <label class="form-label">Common questions customers ask — and how to answer them</label>
+            <textarea name="faq" class="form-input" style="min-height: 160px; resize: vertical;" placeholder="Q: Do you offer emergency service?&#10;A: Yes, we offer 24/7 emergency service.&#10;&#10;Q: What areas do you serve?&#10;A: We serve Phoenix, Scottsdale, Tempe, and surrounding areas.&#10;&#10;Q: How much does a tune-up cost?&#10;A: Tune-ups start at $89. We'll give you an exact quote when we assess the job."></textarea>
+            <p class="text-gray-500 text-xs mt-1">Format as Q: / A: pairs. The more you give Neo, the better she'll answer your customers.</p>
+          </div>
+
+          <div>
+            <label class="form-label">Approximate pricing or pricing range (optional)</label>
+            <textarea name="pricing_info" class="form-input form-textarea" placeholder="e.g. Service calls start at $75. AC installations range from $3,000-$8,000 depending on size. Free estimates on new installs."></textarea>
+          </div>
+
+          <div>
+            <label class="form-label">Anything Neo should NEVER say or do?</label>
+            <textarea name="restrictions" class="form-input form-textarea" placeholder="e.g. Never quote specific prices. Don't discuss competitors. Don't promise same-day service without checking with me first."></textarea>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 5: PRO PLAN ONLY -->
+      <div id="pro-section" class="mb-10 hidden">
+        <div class="section-header">
+          <h2 class="text-white text-xl font-bold">
+            <span class="section-number">5</span>
+            Pro Plan Settings
+            <span class="pro-badge">PRO ONLY</span>
+          </h2>
+        </div>
+        <div class="space-y-5">
+
+          <!-- VOICE SELECTION -->
+          <div>
+            <label class="form-label">Choose Your AI Voice <span class="text-red-400">*</span></label>
+            <p class="text-gray-500 text-xs mb-3">Listen to samples at <a href="/pro-plan.html" class="text-amber-400 hover:underline">neoatyourservice.com/pro-plan</a></p>
+            <div class="space-y-2">
+              <div class="radio-group">
+                <input type="radio" name="voice" value="sarah" id="voice_sarah">
+                <label for="voice_sarah"><strong>Sarah</strong> — English Female · Approachable & Informative</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="voice" value="marcus" id="voice_marcus">
+                <label for="voice_marcus"><strong>Marcus</strong> — English Male · Deep & Smooth</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="voice" value="matilda" id="voice_matilda">
+                <label for="voice_matilda"><strong>Matilda</strong> — English Female · Professional & Polished</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="voice" value="daniel" id="voice_daniel">
+                <label for="voice_daniel"><strong>Daniel</strong> — Spanish Male · Warm & Natural</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="voice" value="valentina" id="voice_valentina">
+                <label for="voice_valentina"><strong>Valentina</strong> — Spanish Female · Clear & Smooth</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- CALENDAR -->
+          <div>
+            <label class="form-label">Calendar Integration</label>
+            <select name="calendar_type" class="form-input form-select">
+              <option value="">No calendar booking needed</option>
+              <option value="calendly">Calendly</option>
+              <option value="google">Google Calendar</option>
+              <option value="outlook">Outlook Calendar</option>
+            </select>
+          </div>
+
+          <div id="calendar-link-field" class="hidden">
+            <label class="form-label">Calendar Booking Link</label>
+            <input type="url" name="calendar_link" class="form-input" placeholder="https://calendly.com/yourbusiness">
+            <p class="text-gray-500 text-xs mt-1">Share your booking link so Neo can direct customers to schedule appointments.</p>
+          </div>
+
+          <!-- CALL TRANSFER -->
+          <div>
+            <label class="form-label">Live Call Transfer Number</label>
+            <input type="tel" name="transfer_number" class="form-input" placeholder="(602) 555-1234 — the number Neo should transfer calls to">
+            <p class="text-gray-500 text-xs mt-1">Leave blank if you don't want live call transfer.</p>
+          </div>
+
+          <div id="transfer-options" class="hidden">
+            <label class="form-label">If you don't answer a transferred call, what should Neo do? <span class="text-red-400">*</span></label>
+            <div class="space-y-3">
+              <div class="radio-group">
+                <input type="radio" name="transfer_fallback" value="take_message" id="fallback_message">
+                <label for="fallback_message">
+                  <strong>Take a message</strong>
+                  Neo returns to the caller and takes their details (recommended)
+                </label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="transfer_fallback" value="voicemail" id="fallback_voicemail">
+                <label for="fallback_voicemail">
+                  <strong>Send to my voicemail</strong>
+                  The call goes to your phone's voicemail
+                </label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" name="transfer_fallback" value="backup_number" id="fallback_backup">
+                <label for="fallback_backup">
+                  <strong>Try a backup number</strong>
+                  Neo tries a second number if you don't answer
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div id="backup-number-field" class="hidden">
+            <label class="form-label">Backup Phone Number</label>
+            <input type="tel" name="backup_number" class="form-input" placeholder="(602) 555-5678">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 6: ANYTHING ELSE -->
+      <div class="mb-10">
+        <div class="section-header">
+          <h2 class="text-white text-xl font-bold">
+            <span class="section-number" id="last-section-number">5</span>
+            Anything Else?
+          </h2>
+        </div>
+        <div>
+          <label class="form-label">Is there anything unique about your business that Neo should know?</label>
+          <textarea name="additional_info" class="form-input" style="min-height: 140px; resize: vertical;" placeholder="Tell us anything else that would help Neo represent your business better. Unique selling points, special policies, key team members, seasonal services, certifications, awards, how long you've been in business — anything that makes your business special."></textarea>
+        </div>
+      </div>
+
+      <!-- SMS CONSENT -->
+      <div class="border border-white/10 rounded-xl p-6 bg-white/5 mb-8">
+        <div class="checkbox-group">
+          <input type="checkbox" name="sms_consent" id="sms_consent" required>
+          <label for="sms_consent" class="text-sm">
+            I consent to receive SMS text messages from Neo At Your Service containing call recording links and service notifications. Message frequency varies. Message & data rates may apply. Reply STOP to opt out at any time. See our <a href="/sms-messaging-policy.html" class="text-amber-400 hover:underline">SMS Messaging Policy</a>.
+          </label>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <button type="submit" id="submit-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 rounded-xl text-lg transition-colors">
+        Submit My Setup Form →
+      </button>
+      <p class="text-gray-500 text-sm text-center mt-4">We'll review your responses and have Neo configured within 1-2 business days. We'll email you when Neo is ready.</p>
+
+    </form>
+
+    <!-- SUCCESS MESSAGE -->
+    <div id="success-message" class="text-center py-16">
+      <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2 class="font-playfair text-3xl font-bold text-white mb-4">You're all set! 🎉</h2>
+      <p class="text-gray-300 text-lg max-w-md mx-auto mb-8">We've received your setup information. Our team will configure Neo for your business within 1-2 business days. We'll email you at <strong class="text-white" id="confirm-email"></strong> when Neo is ready to answer calls.</p>
+      <a href="/" class="inline-block bg-amber-500 hover:bg-amber-600 text-white font-semibold px-8 py-3 rounded-lg no-underline transition-colors">Back to Home</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0d2340] text-gray-500 py-8 border-t border-white/10">
+    <div class="container mx-auto px-6 text-center text-sm">
+      <p>© 2026 ClearLine Answering Services LLC. All rights reserved.</p>
+      <div class="flex justify-center gap-6 mt-3">
+        <a href="/privacy-policy.html" class="hover:text-white transition-colors no-underline">Privacy Policy</a>
+        <a href="/terms-of-service.html" class="hover:text-white transition-colors no-underline">Terms of Service</a>
+        <a href="/sms-messaging-policy.html" class="hover:text-white transition-colors no-underline">SMS Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Show/hide custom greeting field
+    document.querySelectorAll('input[name="greeting_style"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const customField = document.getElementById('custom-greeting-field');
+        customField.classList.toggle('hidden', this.value !== 'custom');
+      });
+    });
+
+    // Show/hide calendar link field
+    document.querySelector('select[name="calendar_type"]').addEventListener('change', function() {
+      const linkField = document.getElementById('calendar-link-field');
+      linkField.classList.toggle('hidden', !this.value);
+    });
+
+    // Show/hide transfer fallback options
+    document.querySelector('input[name="transfer_number"]').addEventListener('input', function() {
+      const transferOptions = document.getElementById('transfer-options');
+      transferOptions.classList.toggle('hidden', !this.value.trim());
+    });
+
+    // Show/hide backup number field
+    document.querySelectorAll('input[name="transfer_fallback"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const backupField = document.getElementById('backup-number-field');
+        backupField.classList.toggle('hidden', this.value !== 'backup_number');
+      });
+    });
+
+    // Show Pro section if plan is pro
+    const urlParams = new URLSearchParams(window.location.search);
+    const plan = urlParams.get('plan') || document.querySelector('input[name="plan"]').value;
+    if (plan === 'pro') {
+      document.getElementById('pro-section').classList.remove('hidden');
+      document.getElementById('last-section-number').textContent = '6';
+    }
+
+    // Form submission
+    document.getElementById('setup-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = 'Submitting...';
+      btn.disabled = true;
+
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        if (data[key]) {
+          if (!Array.isArray(data[key])) data[key] = [data[key]];
+          data[key].push(value);
+        } else {
+          data[key] = value;
+        }
+      });
+
+      try {
+        const response = await fetch('/api/setup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          document.getElementById('setup-form').style.display = 'none';
+          document.getElementById('success-message').style.display = 'block';
+          document.getElementById('confirm-email').textContent = data.email || 'your email address';
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        btn.textContent = 'Submit My Setup Form →';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or email support@neoatyourservice.com');
+      }
+    });
+  </script>
+
+</body>
+</html>
