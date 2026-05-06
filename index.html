@@ -603,24 +603,36 @@
       resultDiv.classList.add('hidden');
       errorDiv.classList.add('hidden');
 
+      const personalizeUrl = 'https://neo-backend-production-dbd6.up.railway.app/api/demo/personalize';
+      const payload = { owner_name: name, biz_name: businessName, industry };
+
+      console.log('[DEMO] POST', personalizeUrl, payload);
+
       try {
-        const response = await fetch('https://neo-backend-production-dbd6.up.railway.app/api/demo/personalize', {
+        const response = await fetch(personalizeUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ owner_name: name, biz_name: businessName, industry })
+          body: JSON.stringify(payload)
         });
 
-        const data = await response.json();
+        console.log('[DEMO] response status:', response.status, response.statusText);
+
+        const data = await response.json().catch(parseErr => {
+          console.error('[DEMO] response was not valid JSON:', parseErr);
+          return {};
+        });
+
+        console.log('[DEMO] response body:', data);
 
         if (response.ok && data.phone_number) {
           btn.textContent = 'Neo is ready — call from your phone!';
           btn.style.opacity = '0.5';
           resultDiv.classList.remove('hidden');
         } else {
-          throw new Error(data.error || 'Personalization failed');
+          throw new Error(data.error || `Personalization failed (HTTP ${response.status})`);
         }
       } catch (err) {
-        console.error('Demo error:', err);
+        console.error('[DEMO] fetch error:', err);
         btn.textContent = 'Meet Neo →';
         btn.disabled = false;
         btn.style.opacity = '1';
