@@ -427,7 +427,7 @@
           <div id="demo-result" class="hidden text-center mt-4">
             <p class="text-amber-400 font-bold text-lg mb-1">Neo is ready for your business!</p>
             <p class="text-[#f0ede6] text-base mb-2">Call Neo now from your phone:</p>
-            <a href="tel:6028487306" class="text-2xl font-bold text-amber-400 hover:text-amber-300 no-underline">(602) 848-7306</a>
+            <a id="demo-phone-link" href="tel:6028487306" class="text-2xl font-bold text-amber-400 hover:text-amber-300 no-underline">(602) 848-7306</a>
             <p class="text-[#8a9bb0] text-xs mt-2">Call from your phone — Neo is personalized and ready.</p>
             <div class="mt-5 border-t border-white/10 pt-5">
               <p class="text-[#8a9bb0] text-sm mb-3">Like what you heard? Lock in the Founders price before spots run out.</p>
@@ -436,7 +436,7 @@
           </div>
 
           <div id="demo-error" class="hidden text-center mt-4">
-            <p class="text-red-400 text-sm">Something went wrong. Please try again.</p>
+            <p id="demo-error-msg" class="text-red-400 text-sm">Something went wrong. Please try again.</p>
           </div>
         </div>
       </div>
@@ -608,6 +608,15 @@
 
       console.log('[DEMO] POST', personalizeUrl, payload);
 
+      const showError = (msg) => {
+        const errorMsg = document.getElementById('demo-error-msg');
+        if (errorMsg) errorMsg.textContent = msg;
+        errorDiv.classList.remove('hidden');
+        btn.textContent = 'Meet Neo →';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+      };
+
       try {
         const response = await fetch(personalizeUrl, {
           method: 'POST',
@@ -624,19 +633,33 @@
 
         console.log('[DEMO] response body:', data);
 
+        if (response.status === 503 && data.code === 'pool_busy') {
+          showError('All demo lines are busy right now. Please try again in a few minutes.');
+          return;
+        }
+
+        if (response.status === 503) {
+          showError('Demo is temporarily unavailable. Please try again in a moment.');
+          return;
+        }
+
         if (response.ok && data.phone_number) {
+          const phoneLink = document.getElementById('demo-phone-link');
+          if (phoneLink) {
+            const digits = (data.phone_e164 || data.phone_number).replace(/[^\d]/g, '');
+            phoneLink.href = 'tel:' + digits;
+            phoneLink.textContent = data.phone_number;
+          }
           btn.textContent = 'Neo is ready — call from your phone!';
           btn.style.opacity = '0.5';
           resultDiv.classList.remove('hidden');
-        } else {
-          throw new Error(data.error || `Personalization failed (HTTP ${response.status})`);
+          return;
         }
+
+        showError(data.error || 'Something went wrong. Please try again.');
       } catch (err) {
         console.error('[DEMO] fetch error:', err);
-        btn.textContent = 'Meet Neo →';
-        btn.disabled = false;
-        btn.style.opacity = '1';
-        errorDiv.classList.remove('hidden');
+        showError('Could not reach Neo. Please check your connection and try again.');
       }
     });
   </script>
