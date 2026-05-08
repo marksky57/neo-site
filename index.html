@@ -698,6 +698,7 @@
           btn.textContent = 'Neo is ready — call from your phone!';
           btn.style.opacity = '0.5';
           resultDiv.classList.remove('hidden');
+          resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }
 
