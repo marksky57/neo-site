@@ -301,8 +301,7 @@
         <div class="section-header">
           <h2 class="text-white text-xl font-bold">
             <span class="section-number">5</span>
-            Pro Plan Settings
-            <span class="pro-badge">PRO ONLY</span>
+            Voice Selection
           </h2>
         </div>
         <div class="space-y-5">
@@ -333,62 +332,6 @@
                 <label for="voice_valentina"><strong>Valentina</strong> — Spanish Female · Clear & Smooth</label>
               </div>
             </div>
-          </div>
-
-          <!-- CALENDAR -->
-          <div>
-            <label class="form-label">Calendar Integration</label>
-            <select name="calendar_type" class="form-input form-select">
-              <option value="">No calendar booking needed</option>
-              <option value="calendly">Calendly</option>
-              <option value="google">Google Calendar</option>
-              <option value="outlook">Outlook Calendar</option>
-            </select>
-          </div>
-
-          <div id="calendar-link-field" class="hidden">
-            <label class="form-label">Calendar Booking Link</label>
-            <input type="url" name="calendar_link" class="form-input" placeholder="https://calendly.com/yourbusiness">
-            <p class="text-gray-500 text-xs mt-1">Share your booking link so Neo can direct customers to schedule appointments.</p>
-          </div>
-
-          <!-- CALL TRANSFER -->
-          <div>
-            <label class="form-label">Live Call Transfer Number</label>
-            <input type="tel" name="transfer_number" class="form-input" placeholder="(602) 555-1234 — the number Neo should transfer calls to">
-            <p class="text-gray-500 text-xs mt-1">Leave blank if you don't want live call transfer.</p>
-          </div>
-
-          <div id="transfer-options" class="hidden">
-            <label class="form-label">If you don't answer a transferred call, what should Neo do? <span class="text-red-400">*</span></label>
-            <div class="space-y-3">
-              <div class="radio-group">
-                <input type="radio" name="transfer_fallback" value="take_message" id="fallback_message">
-                <label for="fallback_message">
-                  <strong>Take a message</strong>
-                  Neo returns to the caller and takes their details (recommended)
-                </label>
-              </div>
-              <div class="radio-group">
-                <input type="radio" name="transfer_fallback" value="voicemail" id="fallback_voicemail">
-                <label for="fallback_voicemail">
-                  <strong>Send to my voicemail</strong>
-                  The call goes to your phone's voicemail
-                </label>
-              </div>
-              <div class="radio-group">
-                <input type="radio" name="transfer_fallback" value="backup_number" id="fallback_backup">
-                <label for="fallback_backup">
-                  <strong>Try a backup number</strong>
-                  Neo tries a second number if you don't answer
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div id="backup-number-field" class="hidden">
-            <label class="form-label">Backup Phone Number</label>
-            <input type="tel" name="backup_number" class="form-input" placeholder="(602) 555-5678">
           </div>
 
         </div>
@@ -456,26 +399,6 @@
       radio.addEventListener('change', function() {
         const customField = document.getElementById('custom-greeting-field');
         customField.classList.toggle('hidden', this.value !== 'custom');
-      });
-    });
-
-    // Show/hide calendar link field
-    document.querySelector('select[name="calendar_type"]').addEventListener('change', function() {
-      const linkField = document.getElementById('calendar-link-field');
-      linkField.classList.toggle('hidden', !this.value);
-    });
-
-    // Show/hide transfer fallback options
-    document.querySelector('input[name="transfer_number"]').addEventListener('input', function() {
-      const transferOptions = document.getElementById('transfer-options');
-      transferOptions.classList.toggle('hidden', !this.value.trim());
-    });
-
-    // Show/hide backup number field
-    document.querySelectorAll('input[name="transfer_fallback"]').forEach(radio => {
-      radio.addEventListener('change', function() {
-        const backupField = document.getElementById('backup-number-field');
-        backupField.classList.toggle('hidden', this.value !== 'backup_number');
       });
     });
 
