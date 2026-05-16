@@ -68,13 +68,15 @@ Tone/idiom can differ; substantive claims cannot.
 
 ---
 
-## Standard product scope (changed 2026-05-15 — must match neo-backend/CLAUDE.md)
+## Product scope — there is ONE product (changed 2026-05-15 — must match neo-backend/CLAUDE.md)
 
-**Live call transfer IS now part of the standard product** — no setup fee, no upsell. Neo recognizes urgent/explicit "connect me" calls and transfers them to the owner's transfer line; if the owner doesn't pick up within ~18s, Neo takes a message and texts the owner. Marketing copy MAY claim emergency/urgent live transfer. Honest framing only: "urgent calls put straight through; if you can't grab it, you get an instant alert" — do NOT promise flawless universal live connection (carrier/Google-Voice realities vary). Calendar booking remains a case-by-case manual upsell — still not standard.
+**There is only ONE product: NEO Pro.** No tiers, no "standard vs pro." The $59/mo Founders price and the post-cap $99/mo price are two *prices* of the same single product, not two products. Never use "standard product / standard plan / standard tier" framing — it implies tiers that don't exist. (The archived $29 "NEO Standard" is dead; never reference it.)
+
+**Live call transfer IS part of the product** — no setup fee, no upsell. Neo recognizes urgent/explicit "connect me" calls and transfers them to the owner's transfer line; if the owner doesn't pick up within ~18s, Neo takes a message and texts the owner. Marketing copy MAY claim emergency/urgent live transfer. Honest framing only: "urgent calls put straight through; if you can't grab it, you get an instant alert" — do NOT promise flawless universal live connection (carrier/Google-Voice realities vary). Calendar booking is NOT part of the product — case-by-case manual upsell only.
 
 ## What NOT to add to marketing copy
 
-- "Calendar booking" — not in standard product (case-by-case manual upsell only). Saying Neo "captures appointment requests" / "takes appointment requests" is fine; saying it "books appointments into your calendar" is not.
+- "Calendar booking" — not part of the product (case-by-case manual upsell only). Saying Neo "captures appointment requests" / "takes appointment requests" is fine; saying it "books appointments into your calendar" is not.
 - "Free trial" or "7-day trial" — removed; we charge immediately with 30-day money-back instead
 - "Setup fee" — Founders explicitly waives this; don't reintroduce
 - "Fully autonomous" / "self-learning" / "human replacement" — overclaim, avoid
