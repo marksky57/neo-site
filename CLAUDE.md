@@ -68,10 +68,13 @@ Tone/idiom can differ; substantive claims cannot.
 
 ---
 
+## Standard product scope (changed 2026-05-15 — must match neo-backend/CLAUDE.md)
+
+**Live call transfer IS now part of the standard product** — no setup fee, no upsell. Neo recognizes urgent/explicit "connect me" calls and transfers them to the owner's transfer line; if the owner doesn't pick up within ~18s, Neo takes a message and texts the owner. Marketing copy MAY claim emergency/urgent live transfer. Honest framing only: "urgent calls put straight through; if you can't grab it, you get an instant alert" — do NOT promise flawless universal live connection (carrier/Google-Voice realities vary). Calendar booking remains a case-by-case manual upsell — still not standard.
+
 ## What NOT to add to marketing copy
 
-- "Calendar booking" — not in standard product (case-by-case manual upsell only)
-- "Live call transfer" — not in standard product (case-by-case manual upsell only)
+- "Calendar booking" — not in standard product (case-by-case manual upsell only). Saying Neo "captures appointment requests" / "takes appointment requests" is fine; saying it "books appointments into your calendar" is not.
 - "Free trial" or "7-day trial" — removed; we charge immediately with 30-day money-back instead
 - "Setup fee" — Founders explicitly waives this; don't reintroduce
 - "Fully autonomous" / "self-learning" / "human replacement" — overclaim, avoid
@@ -93,4 +96,4 @@ Tone/idiom can differ; substantive claims cannot.
 - Don't reintroduce trial language anywhere.
 - Don't change the Founders CTA URL without coordinating with neo-backend (it expects the form-driven `/checkout?plan=pro` path).
 - Don't make absolute spam claims — always qualify with ~99%.
-- Don't add features to copy that aren't in the product (calendar, transfer, etc.).
+- Don't add features to copy that aren't in the product. Calendar booking is still NOT standard (don't claim it). Live call transfer / emergency live routing IS now standard (claiming it is correct — see "Standard product scope").
