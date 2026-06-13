@@ -110,11 +110,13 @@ document.getElementById('repForm').addEventListener('submit', async (e) => {
   btn.textContent = 'Provisioning…';
   pre.style.display = 'none';
 
+  const pin = String(document.getElementById('code').value).trim();
   const body = {
     name: document.getElementById('name').value.trim(),
     email: document.getElementById('email').value.trim(),
     state: document.getElementById('state').value,
-    code: Number(document.getElementById('code').value),
+    pin,
+    admin_pin: pin,
   };
 
   try {
@@ -143,8 +145,10 @@ document.getElementById('repForm').addEventListener('submit', async (e) => {
 async function loadReps() {
   const wrap = document.getElementById('tableWrap');
   try {
-    const res = await fetch(`${API}/api/reps/list`);
-    const reps = await res.json();
+    const adminPin = document.getElementById('code').value.trim();
+    const res = await fetch(`${API}/api/reps/list?admin_pin=${encodeURIComponent(adminPin)}`);
+    const data = await res.json();
+    const reps = data.reps;
 
     if (!Array.isArray(reps) || reps.length === 0) {
       wrap.innerHTML = '<p class="loading">No reps yet.</p>';
@@ -176,7 +180,12 @@ async function loadReps() {
 async function toggle(id, btn) {
   btn.disabled = true;
   try {
-    const res = await fetch(`${API}/api/reps/${id}/toggle`, { method: 'POST' });
+    const adminPin = document.getElementById('code').value.trim();
+    const res = await fetch(`${API}/api/reps/${id}/toggle`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ admin_pin: adminPin }),
+    });
     const data = await res.json();
     if (res.ok) loadReps();
     else alert(data.error || 'Toggle failed');
