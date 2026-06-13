@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neo — Rep Admin</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; padding: 16px; }
+    h1 { font-size: 1.4rem; margin-bottom: 20px; }
+    h2 { font-size: 1.1rem; margin-bottom: 12px; color: #444; }
+
+    .card { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+
+    label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 4px; margin-top: 14px; }
+    label:first-of-type { margin-top: 0; }
+    input, select {
+      width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px;
+      font-size: 1rem; background: #fff;
+    }
+    input:focus, select:focus { outline: 2px solid #2563eb; border-color: transparent; }
+
+    button.submit {
+      margin-top: 18px; width: 100%; padding: 12px;
+      background: #2563eb; color: #fff; border: none; border-radius: 6px;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+    }
+    button.submit:disabled { background: #93c5fd; cursor: default; }
+
+    pre#response {
+      background: #1e1e1e; color: #d4d4d4; padding: 14px; border-radius: 6px;
+      font-size: .82rem; white-space: pre-wrap; word-break: break-word;
+      max-height: 200px; overflow-y: auto; display: none;
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    th { text-align: left; padding: 8px 10px; background: #f0f0f0; border-bottom: 2px solid #ddd; }
+    td { padding: 8px 10px; border-bottom: 1px solid #eee; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .78rem; font-weight: 600;
+    }
+    .badge.active { background: #dcfce7; color: #166534; }
+    .badge.inactive { background: #fee2e2; color: #991b1b; }
+
+    button.toggle {
+      padding: 5px 12px; border-radius: 5px; border: 1px solid #ccc;
+      font-size: .82rem; cursor: pointer; background: #fff;
+    }
+    button.toggle:hover { background: #f0f0f0; }
+
+    .loading { color: #888; font-style: italic; font-size: .9rem; }
+    .error { color: #b91c1c; font-size: .88rem; margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+<h1>Rep Admin</h1>
+
+<div class="card">
+  <h2>Provision a Rep</h2>
+  <form id="repForm">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required placeholder="Jane Smith">
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required placeholder="jane@example.com">
+
+    <label for="state">State</label>
+    <select id="state" name="state" required>
+      <option value="">— Select state —</option>
+      <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+      <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+      <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+      <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+      <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+      <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+      <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+      <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+      <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+      <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+      <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+      <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+      <option>Wisconsin</option><option>Wyoming</option>
+    </select>
+
+    <label for="code">Code</label>
+    <input id="code" name="code" type="number" required placeholder="1234">
+
+    <button type="submit" class="submit" id="submitBtn">Provision Rep</button>
+  </form>
+  <pre id="response"></pre>
+</div>
+
+<div class="card">
+  <h2>All Reps</h2>
+  <div id="tableWrap"><p class="loading">Loading…</p></div>
+</div>
+
+<script>
+const API = 'https://neo-backend-production-dbd6.up.railway.app';
+
+// --- Form submit ---
+document.getElementById('repForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const pre = document.getElementById('response');
+  btn.disabled = true;
+  btn.textContent = 'Provisioning…';
+  pre.style.display = 'none';
+
+  const body = {
+    name: document.getElementById('name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    state: document.getElementById('state').value,
+    code: Number(document.getElementById('code').value),
+  };
+
+  try {
+    const res = await fetch(`${API}/api/reps/provision`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    pre.textContent = JSON.stringify(data, null, 2);
+    pre.style.display = 'block';
+    if (res.ok) {
+      e.target.reset();
+      loadReps();
+    }
+  } catch (err) {
+    pre.textContent = 'Error: ' + err.message;
+    pre.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Provision Rep';
+  }
+});
+
+// --- Load reps table ---
+async function loadReps() {
+  const wrap = document.getElementById('tableWrap');
+  try {
+    const res = await fetch(`${API}/api/reps/list`);
+    const reps = await res.json();
+
+    if (!Array.isArray(reps) || reps.length === 0) {
+      wrap.innerHTML = '<p class="loading">No reps yet.</p>';
+      return;
+    }
+
+    const rows = reps.map(r => `
+      <tr id="row-${r.id}">
+        <td>${esc(r.name)}</td>
+        <td>${esc(r.email)}</td>
+        <td>${esc(r.state)}</td>
+        <td>${esc(String(r.code))}</td>
+        <td><span class="badge ${r.active ? 'active' : 'inactive'}">${r.active ? 'Active' : 'Inactive'}</span></td>
+        <td><button class="toggle" onclick="toggle(${r.id}, this)">${r.active ? 'Deactivate' : 'Activate'}</button></td>
+      </tr>
+    `).join('');
+
+    wrap.innerHTML = `
+      <table>
+        <thead><tr><th>Name</th><th>Email</th><th>State</th><th>Code</th><th>Status</th><th></th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    `;
+  } catch (err) {
+    wrap.innerHTML = `<p class="error">Failed to load: ${esc(err.message)}</p>`;
+  }
+}
+
+async function toggle(id, btn) {
+  btn.disabled = true;
+  try {
+    const res = await fetch(`${API}/api/reps/${id}/toggle`, { method: 'POST' });
+    const data = await res.json();
+    if (res.ok) loadReps();
+    else alert(data.error || 'Toggle failed');
+  } catch (err) {
+    alert('Error: ' + err.message);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+loadReps();
+</script>
+</body>
+</html>
