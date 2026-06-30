@@ -440,6 +440,10 @@
             <a id="demo-phone-link" href="tel:6028487306" class="text-2xl font-bold text-amber-400 hover:text-amber-300 no-underline">(602) 848-7306</a>
             <p class="text-[#8a9bb0] text-xs mt-2">Call from your phone — Neo is personalized and ready.</p>
             <div class="mt-5 border-t border-white/10 pt-5">
+              <p class="text-[#8a9bb0] text-sm mb-3">Want to see your free website too? Built for your business in seconds.</p>
+              <a id="demo-website-link" href="https://neo-backend-production-dbd6.up.railway.app/site-preview" target="_blank" rel="noopener" class="inline-block bg-[#1e3050] hover:bg-[#27406b] text-amber-300 font-semibold px-6 py-3 rounded-xl text-sm no-underline transition-all border border-amber-500/30">See My Free Website →</a>
+            </div>
+            <div class="mt-5 border-t border-white/10 pt-5">
               <p class="text-[#8a9bb0] text-sm mb-3">Like what you heard? Lock in the Founders price before spots run out.</p>
               <a href="#pricing" class="inline-block bg-amber-500 hover:bg-amber-400 text-[#0d1b2e] font-semibold px-6 py-3 rounded-xl text-sm no-underline transition-all">See Founders Pricing →</a>
             </div>
@@ -692,6 +696,11 @@
           }
           btn.textContent = 'Neo is ready — call from your phone!';
           btn.style.opacity = '0.5';
+          const websiteLink = document.getElementById('demo-website-link');
+          if (websiteLink) {
+            const qs = new URLSearchParams({ bizName: businessName, ownerName: name, industry });
+            websiteLink.href = 'https://neo-backend-production-dbd6.up.railway.app/site-preview?' + qs.toString();
+          }
           resultDiv.classList.remove('hidden');
           resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
