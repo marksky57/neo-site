@@ -7,6 +7,9 @@ Drives to the personalized demo experience (the form) — never a generic demo
 phone line. Free website is a signup benefit and is intentionally NOT pitched
 here (it would dangle a pre-signup perk).
 
+Core brand promise (recurring across site, demos, video, all assets):
+**"Before you buy Neo, hear Neo answer your business."**
+
 Final version in use (2026-07-02):
 
 ---
@@ -37,10 +40,20 @@ I'll pick up the phone as if I already work for you — and you'll hear exactly 
 
 No signup. No obligation.
 
-Just your business, answered.
+Before you buy Neo, hear Neo answer your business.
 
 Go ahead — I'm ready when you are.
 
 ---
 
-**Delivery notes:** slow down and land the turn on "I don't do voicemail. I answer." Warm up through the final three lines. The recurring positioning line ("Most AI receptionists ask you to imagine it. Neo lets you hear it.") also appears on the homepage demo section — keep them consistent.
+## Closing for DISTRIBUTED versions (social, YouTube, ads — anywhere NOT the homepage)
+
+On the homepage the demo form is right below, so the script above points "below."
+For any version posted off-site, swap the final two lines for this close so it
+drives back to the site:
+
+> Want a more personalized experience? Before you buy Neo, hear Neo answer your business. Visit NeoAtYourService.com to create your custom demo.
+
+---
+
+**Delivery notes:** slow down and land the turn on "I don't do voicemail. I answer." Warm up through the final lines, and let the brand promise ("Before you buy Neo, hear Neo answer your business") sit as its own confident beat. The positioning line ("Most AI receptionists ask you to imagine it. Neo lets you hear it.") and the brand promise both also appear on the homepage — keep them word-for-word consistent.
