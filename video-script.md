@@ -28,15 +28,11 @@ I answer — in your business name, day or night, in English or Spanish.
 
 I find out what they need, capture their information, and send you the details before the call is even over.
 
-But don't take my word for it.
+But don't take my word for it. Hear me for yourself.
 
-Most AI receptionists ask you to imagine it. Neo lets you hear it.
+Call my demo line right now and hear how I answer — then I'll text you a link so you can hear me answer as YOUR business, with your name and your industry.
 
-In less than a minute, you can hear me answer for your business.
-
-Just enter your name, business name, and industry below.
-
-I'll pick up the phone as if I already work for you — and you'll hear exactly what your customers would hear.
+It takes less than a minute, and you'll hear exactly what your customers would hear.
 
 No signup. No obligation.
 
