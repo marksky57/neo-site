@@ -18,21 +18,31 @@ Hi — I'm Neo.
 
 If you're a contractor or small business owner, let me ask you something.
 
-When you're busy and can't get to the phone — up a ladder, under a truck, out on a job, or with your family — what happens?
+When you're busy and can't get to the phone — up a ladder, under a truck, on a job site, or spending time with your family — what happens when a customer calls?
 
-Most business owners send them to voicemail. And most callers don't leave one — they just hang up and call your competitor.
+Most businesses send callers to voicemail.
+
+Most callers don't leave one.
+
+Every missed call is a customer calling someone else.
 
 I don't do voicemail.
 
-I answer — in your business name, day or night, in English or Spanish.
+I answer in your business name, day or night, in English or Spanish.
 
-I find out what they need, capture their information, and send you the details before the call is even over.
+I qualify the caller, capture the lead, and send you the details instantly — often before the conversation is even over.
 
-But don't take my word for it. Hear me for yourself.
+But don't take my word for it. Try me yourself.
 
-Just enter your name, your business, and your industry right here — and in under a minute I'll answer as if I already work for you. You'll hear exactly what your customers would hear. No signup, no obligation.
+Enter your name, your business, and your industry below, and in less than a minute I'll answer as if I already work for you.
 
-And when you're ready to go live, I learn your business straight from your website — or if you don't have one, we'll build you one, free, no extra charge.
+You'll hear exactly what your customers hear.
+
+No signup. No credit card. No obligation.
+
+And when you're ready to go live, I can learn your business directly from your website.
+
+Don't have one? We'll build one for you at no additional cost.
 
 Before you buy Neo, hear Neo answer your business.
 
