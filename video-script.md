@@ -30,11 +30,9 @@ I find out what they need, capture their information, and send you the details b
 
 But don't take my word for it. Hear me for yourself.
 
-Call my demo line right now and hear how I answer — then I'll text you a link so you can hear me answer as YOUR business, with your name and your industry.
+Just enter your name, your business, and your industry right here — and in under a minute I'll answer as if I already work for you. You'll hear exactly what your customers would hear. No signup, no obligation.
 
-It takes less than a minute, and you'll hear exactly what your customers would hear.
-
-No signup. No obligation.
+And when you're ready to go live, I learn your business straight from your website — or if you don't have one, we'll build you one, free, no extra charge.
 
 Before you buy Neo, hear Neo answer your business.
 
