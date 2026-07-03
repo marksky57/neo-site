@@ -104,33 +104,23 @@
   <!-- HERO -->
   <section class="bg-[#0d2340] text-white pt-14 pb-12">
     <div class="container mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
-        <div class="flex-1">
-          <p class="text-sm font-semibold tracking-widest uppercase text-amber-400/80 mb-3">Hear It On Your Own Phone</p>
-          <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-4">Hear Your Business Answered by NEO.</h1>
-          <p class="text-amber-300 text-lg md:text-xl font-semibold mb-5 max-w-xl">Before you buy NEO, hear NEO answer your business.</p>
-          <p class="text-gray-300 text-xl leading-relaxed mb-4 max-w-xl">Every missed call is a missed job that goes straight to your competitor.</p>
-          <p class="text-gray-300 text-lg leading-relaxed mb-6 max-w-xl">Enter your business name and industry. In under a minute, NEO answers the phone as if she already works for you — and you'll hear exactly what your customers hear. <strong class="text-white">No signup required.</strong></p>
-          <p class="text-gray-300 text-base mt-8 mb-6">One simple plan. <strong class="text-white">No setup fee. No contracts. Cancel anytime.</strong></p>
-          <div class="flex flex-col sm:flex-row items-start gap-4 mb-4">
-            <a href="#demo" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">Hear NEO Answer My Business →</a>
-            <a href="#pricing" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">See Pricing</a>
-          </div>
-          <div class="flex items-center gap-4 flex-wrap">
-            <p class="text-gray-400 text-sm">Keep your existing number — setup takes 60 seconds</p>
-            <a href="#how-it-works" class="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors no-underline whitespace-nowrap">See how it works →</a>
-          </div>
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-sm font-semibold tracking-widest uppercase text-amber-400/80 mb-3">Hear It On Your Own Phone</p>
+        <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-4">Hear Your Business Answered by NEO.</h1>
+        <p class="text-amber-300 text-lg md:text-xl font-semibold mb-8">Before you buy NEO, hear NEO answer your business.</p>
+        <div class="rounded-xl overflow-hidden border-2 border-amber-400/40 shadow-2xl bg-black aspect-video ring-4 ring-amber-400/10">
+          <video class="w-full h-full object-contain bg-black" controls preload="none" playsinline poster="/neo-intro-poster.jpg">
+            <source src="/neo-intro.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
         </div>
-        <div class="flex-shrink-0 flex flex-col items-center self-start w-full max-w-md lg:max-w-xl">
-          <div class="w-full rounded-xl overflow-hidden border-2 border-amber-400/40 shadow-2xl bg-black aspect-video ring-4 ring-amber-400/10">
-            <video class="w-full h-full object-contain bg-black" controls preload="none" playsinline poster="/neo-intro-poster.jpg">
-              <source src="/neo-intro.mp4" type="video/mp4">
-              Your browser does not support video playback.
-            </video>
-          </div>
-          <p class="text-center text-gray-300 text-lg mt-3 font-medium">▶ Meet NEO — then hear her answer for <span class="text-amber-400">your</span> business</p>
-          <p class="text-center text-sm mt-1"><a href="/es" class="text-amber-400 hover:text-amber-300 no-underline">en Español →</a></p>
+        <p class="text-gray-300 text-lg mt-3 mb-6 font-medium">▶ Meet NEO — then hear her answer for <span class="text-amber-400">your</span> business</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+          <a href="#demo" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">Hear NEO Answer My Business →</a>
+          <a href="#pricing" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">See Pricing</a>
         </div>
+        <p class="text-gray-300 text-lg leading-relaxed mb-3 max-w-2xl mx-auto">Every missed call is a missed job that goes straight to your competitor — enter your business and industry and hear exactly what your customers hear. <strong class="text-white">No signup required.</strong></p>
+        <p class="text-gray-400 text-sm">One simple plan &middot; No setup fee &middot; No contracts &middot; Keep your existing number &nbsp;&middot;&nbsp; <a href="#how-it-works" class="text-amber-400 hover:text-amber-300 no-underline">See how it works →</a> &nbsp;&middot;&nbsp; <a href="/es" class="text-amber-400 hover:text-amber-300 no-underline">en Español →</a></p>
       </div>
     </div>
   </section>
@@ -422,6 +412,7 @@
                 <option value="autorepair" style="background: #0d1b2e;">Auto Repair</option>
                 <option value="tree" style="background: #0d1b2e;">Tree Service</option>
                 <option value="towing" style="background: #0d1b2e;">Towing</option>
+                <option value="junkremoval" style="background: #0d1b2e;">Junk Removal</option>
                 <option value="realestate" style="background: #0d1b2e;">Real Estate</option>
                 <option value="insurance" style="background: #0d1b2e;">Insurance</option>
                 <option value="other" style="background: #0d1b2e;">Other</option>
@@ -620,6 +611,7 @@
       insurance: ['Quotes', 'Claims support', 'Bundled coverage'],
       tree: ['Tree removal & trimming', 'Storm / emergency cleanup', 'Free estimates'],
       towing: ['24/7 emergency tow', 'Jump-starts & lockouts', 'Roadside assistance'],
+      junkremoval: ['Debris & junk removal', 'Furniture & appliance hauling', 'Property cleanouts', 'Free Quote'],
     };
 
     document.getElementById('demo-industry').addEventListener('change', function() {
