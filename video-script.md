@@ -18,7 +18,7 @@ Hi — I'm Neo.
 
 If you're a contractor or small business owner, let me ask you something.
 
-When a customer calls while you're on a roof, under a truck, driving, or with your family, what happens?
+When you're busy and can't get to the phone — up a ladder, under a truck, out on a job, or with your family — what happens?
 
 Most business owners send them to voicemail. And most callers don't leave one — they just hang up and call your competitor.
 
