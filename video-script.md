@@ -34,7 +34,7 @@ I qualify the caller, capture the lead, and send you the details instantly — o
 
 But don't take my word for it. Try me yourself.
 
-Enter your name, your business, and your industry below, and in less than a minute I'll answer as if I already work for you.
+Just click the orange button — "Hear Neo Answer My Business" — then tell me your name, your business, and your industry, and in less than a minute I'll answer as if I already work for you.
 
 You'll hear exactly what your customers hear.
 
