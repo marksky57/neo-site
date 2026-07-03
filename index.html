@@ -106,27 +106,28 @@
     <div class="container mx-auto px-6">
       <div class="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
         <div class="flex-1">
-          <p class="text-sm font-semibold tracking-widest uppercase text-amber-400/80 mb-3">AI Receptionist Service</p>
-          <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6">Never Miss a Call.</h1>
-          <p class="text-gray-300 text-xl leading-relaxed mb-6 max-w-xl">Every missed call is a missed job that goes straight to your competitor. This Bilingual AI Receptionist answers your phone 24/7, answers FAQs, and handles lead intake for a fraction of the cost of a human receptionist.</p>
-          <p class="text-gray-300 text-base mt-10 mb-6">One simple plan. <strong class="text-white">No setup fee. No contracts. Cancel anytime.</strong></p>
+          <p class="text-sm font-semibold tracking-widest uppercase text-amber-400/80 mb-3">Hear It On Your Own Phone</p>
+          <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6">Hear Your Business Answered by Neo.</h1>
+          <p class="text-gray-300 text-xl leading-relaxed mb-4 max-w-xl">Every missed call is a missed job that goes straight to your competitor.</p>
+          <p class="text-gray-300 text-lg leading-relaxed mb-6 max-w-xl">Enter your business name and industry. In under a minute, Neo answers the phone as if she already works for you — and you'll hear exactly what your customers hear. <strong class="text-white">No signup required.</strong></p>
+          <p class="text-gray-300 text-base mt-8 mb-6">One simple plan. <strong class="text-white">No setup fee. No contracts. Cancel anytime.</strong></p>
           <div class="flex flex-col sm:flex-row items-start gap-4 mb-4">
-            <a href="#pricing" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">See Pricing →</a>
-            <a href="#demo" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">Hear Neo In Action</a>
+            <a href="#demo" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">Hear Your Business Answered →</a>
+            <a href="#pricing" class="bg-violet-600 hover:bg-violet-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-colors text-base no-underline">See Pricing</a>
           </div>
           <div class="flex items-center gap-4 flex-wrap">
             <p class="text-gray-400 text-sm">Keep your existing number — setup takes 60 seconds</p>
             <a href="#how-it-works" class="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors no-underline whitespace-nowrap">See how it works →</a>
           </div>
         </div>
-        <div class="flex-shrink-0 flex flex-col items-center self-start w-full max-w-sm lg:max-w-md">
-          <div class="w-full rounded-xl overflow-hidden border-2 border-white/10 shadow-2xl bg-black aspect-video">
+        <div class="flex-shrink-0 flex flex-col items-center self-start w-full max-w-md lg:max-w-xl">
+          <div class="w-full rounded-xl overflow-hidden border-2 border-amber-400/40 shadow-2xl bg-black aspect-video ring-4 ring-amber-400/10">
             <video class="w-full h-full object-contain bg-black" controls preload="none" playsinline poster="/neo-intro-poster.jpg">
               <source src="/neo-intro.mp4" type="video/mp4">
               Your browser does not support video playback.
             </video>
           </div>
-          <p class="text-center text-gray-400 text-lg mt-3">▶ Meet Neo — your AI bilingual receptionist</p>
+          <p class="text-center text-gray-300 text-lg mt-3 font-medium">▶ Meet Neo — then hear her answer for <span class="text-amber-400">your</span> business</p>
           <p class="text-center text-sm mt-1"><a href="/es" class="text-amber-400 hover:text-amber-300 no-underline">en Español →</a></p>
         </div>
       </div>
@@ -396,7 +397,8 @@
       <div class="flex flex-col items-center text-center">
         <p class="text-xs font-medium tracking-widest uppercase text-amber-400 mb-4">Live Demo</p>
         <h2 class="font-dm-serif text-[clamp(28px,4vw,44px)] font-normal leading-tight mb-3 text-[#f0ede6]">Hear your business.<br>Answered by Neo.</h2>
-        <p class="text-[15px] text-[#8a9bb0] max-w-md leading-relaxed mb-9">Two fields. Pick your industry. Then call Neo from your phone — she'll answer as your business.</p>
+        <p class="text-amber-400/90 text-sm font-medium mb-4">Most AI receptionists ask you to imagine it. Neo lets you hear it.</p>
+        <p class="text-[15px] text-[#8a9bb0] max-w-md leading-relaxed mb-9">Enter your business name and industry — Neo builds a personalized phone demo in seconds. Call your demo number and hear exactly what your customers experience when you can't pick up. No signup required.</p>
         <div class="bg-[#152236] border border-[#1e3050] rounded-2xl p-9 w-full max-w-md text-left">
           <div class="mb-5">
             <label class="block text-xs text-[#8a9bb0] mb-2 tracking-wide">Your name</label>
@@ -425,6 +427,12 @@
             </div>
           </div>
 
+          <div class="mb-6">
+            <label class="block text-xs text-[#8a9bb0] mb-2 tracking-wide">Business website <span class="text-[#5a6b80]">(optional)</span></label>
+            <input id="demo-website" placeholder="yourbusiness.com" class="w-full bg-[#0d1b2e] border border-[#1e3050] rounded-xl px-4 py-3 text-[#f0ede6] text-[15px] font-light outline-none focus:border-amber-400 transition-colors placeholder:opacity-60" type="text">
+            <p class="text-[#5a6b80] text-xs mt-2">No website yet? Leave it blank and Neo will build you a free preview.</p>
+          </div>
+
           <div id="vertical-hint" class="hidden mb-5">
             <p class="text-[#8a9bb0] text-xs mb-2 tracking-wide">Neo will be ready to handle:</p>
             <div id="vertical-hint-chips" class="flex flex-wrap gap-1.5"></div>
@@ -439,9 +447,12 @@
             <p class="text-[#f0ede6] text-base mb-2">Call Neo now from your phone:</p>
             <a id="demo-phone-link" href="tel:6028487306" class="text-2xl font-bold text-amber-400 hover:text-amber-300 no-underline">(602) 848-7306</a>
             <p class="text-[#8a9bb0] text-xs mt-2">Call from your phone — Neo is personalized and ready.</p>
-            <div class="mt-5 border-t border-white/10 pt-5">
-              <p class="text-[#8a9bb0] text-sm mb-3">Want to see your free website too? Built for your business in seconds.</p>
+            <div id="demo-freesite-block" class="mt-5 border-t border-white/10 pt-5">
+              <p class="text-[#8a9bb0] text-sm mb-3"><span class="text-amber-300 font-semibold">Bonus:</span> no website yet? See a free preview built for your business in seconds.</p>
               <a id="demo-website-link" href="https://neo-backend-production-dbd6.up.railway.app/site-preview" target="_blank" rel="noopener" class="inline-block bg-[#1e3050] hover:bg-[#27406b] text-amber-300 font-semibold px-6 py-3 rounded-xl text-sm no-underline transition-all border border-amber-500/30">See My Free Website →</a>
+            </div>
+            <div id="demo-hassite-note" class="hidden mt-5 border-t border-white/10 pt-5">
+              <p class="text-[#8a9bb0] text-sm">Perfect — you already have a website, so you're all set. We'll reference <span id="demo-hassite-url" class="text-amber-300"></span> when you set up your account.</p>
             </div>
             <div class="mt-5 border-t border-white/10 pt-5">
               <p class="text-[#8a9bb0] text-sm mb-3">Like what you heard? Lock in the Founders price before spots run out.</p>
@@ -631,6 +642,7 @@
       const name = document.getElementById('demo-name').value.trim();
       const businessName = document.getElementById('demo-business').value.trim();
       const industry = document.getElementById('demo-industry').value;
+      const website = document.getElementById('demo-website').value.trim();
 
       if (!businessName || !industry) {
         alert('Please enter your business name and select your industry.');
@@ -649,6 +661,7 @@
 
       const personalizeUrl = 'https://neo-backend-production-dbd6.up.railway.app/api/demo/personalize';
       const payload = { owner_name: name, biz_name: businessName, industry };
+      if (website) payload.website = website;
 
       console.log('[DEMO] POST', personalizeUrl, payload);
 
@@ -696,10 +709,24 @@
           }
           btn.textContent = 'Neo is ready — call from your phone!';
           btn.style.opacity = '0.5';
-          const websiteLink = document.getElementById('demo-website-link');
-          if (websiteLink) {
-            const qs = new URLSearchParams({ bizName: businessName, ownerName: name, industry });
-            websiteLink.href = 'https://neo-backend-production-dbd6.up.railway.app/site-preview?' + qs.toString();
+          // Free website is a bonus ONLY for owners who don't already have a
+          // site — Neo needs talking points from somewhere (their site or the
+          // one we build). If they gave a website, hide the free-preview offer.
+          const freesiteBlock = document.getElementById('demo-freesite-block');
+          const hassiteNote = document.getElementById('demo-hassite-note');
+          if (website) {
+            if (freesiteBlock) freesiteBlock.classList.add('hidden');
+            if (hassiteNote) hassiteNote.classList.remove('hidden');
+            const hassiteUrl = document.getElementById('demo-hassite-url');
+            if (hassiteUrl) hassiteUrl.textContent = website;
+          } else {
+            if (freesiteBlock) freesiteBlock.classList.remove('hidden');
+            if (hassiteNote) hassiteNote.classList.add('hidden');
+            const websiteLink = document.getElementById('demo-website-link');
+            if (websiteLink) {
+              const qs = new URLSearchParams({ bizName: businessName, ownerName: name, industry });
+              websiteLink.href = 'https://neo-backend-production-dbd6.up.railway.app/site-preview?' + qs.toString();
+            }
           }
           resultDiv.classList.remove('hidden');
           resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
