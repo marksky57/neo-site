@@ -3,6 +3,9 @@
 The spoken script for Neo's homepage intro video (`neo-intro.mp4`). Its one
 job: get the visitor to scroll to the demo form and hear Neo answer for their
 own business. Keep it under ~a minute so it doesn't compete with the demo.
+Drives to the personalized demo experience (the form) — never a generic demo
+phone line. Free website is a signup benefit and is intentionally NOT pitched
+here (it would dangle a pre-signup perk).
 
 Final version in use (2026-07-02):
 
@@ -10,7 +13,7 @@ Final version in use (2026-07-02):
 
 Hi — I'm Neo.
 
-Let me ask you something.
+If you're a contractor or small business owner, let me ask you something.
 
 When a customer calls while you're on a roof, under a truck, driving, or with your family, what happens?
 
