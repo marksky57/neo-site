@@ -733,6 +733,44 @@
         showError('Could not reach NEO. Please check your connection and try again.');
       }
     });
+
+    // ============================================================
+    // PREFILL FROM URL PARAMS  (?biz=&industry=&name=&website=)
+    // Lets a texted prospect land straight on THEIR own personalized demo —
+    // no typing, no "Desert Air HVAC" placeholder. Used by the outbound
+    // prospecting caller, which already knows the business it just called.
+    // Normal visitors (no params) see the form unchanged.
+    // ============================================================
+    (function prefillDemoFromUrl() {
+      const p = new URLSearchParams(window.location.search);
+      const biz = (p.get('biz') || '').trim();
+      const industry = (p.get('industry') || '').trim();
+      if (!biz && !industry) return; // normal visitor
+
+      const setVal = (id, val) => { const el = document.getElementById(id); if (el && val) el.value = val; };
+      setVal('demo-name', (p.get('name') || '').trim());
+      setVal('demo-business', biz);
+      setVal('demo-website', (p.get('website') || '').trim());
+
+      let industryOk = false;
+      if (industry) {
+        const sel = document.getElementById('demo-industry');
+        if (sel && [...sel.options].some(o => o.value === industry)) {
+          sel.value = industry;
+          industryOk = true;
+        }
+      }
+
+      const demo = document.getElementById('demo');
+      if (demo) demo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Auto-personalize only when we have both required fields, so the
+      // prospect immediately sees their call number without touching anything.
+      if (biz && industryOk) {
+        const btn = document.getElementById('demo-btn');
+        if (btn) setTimeout(() => btn.click(), 700);
+      }
+    })();
   </script>
 
 </body>
