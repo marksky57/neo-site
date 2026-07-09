@@ -19,7 +19,7 @@
     .font-playfair { font-family: 'Playfair Display', serif; }
     html { scroll-behavior: smooth; }
     /* land anchors below the two sticky bars */
-    section[id] { scroll-margin-top: 120px; }
+    section[id] { scroll-margin-top: 160px; }
     .acc-body { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
     .acc.open .acc-body { max-height: 400px; }
     .acc.open .acc-chev { transform: rotate(180deg); }
@@ -39,7 +39,7 @@
 
   <!-- Sticky section nav (horizontal scroll) -->
   <nav class="bg-white sticky top-14 z-40 border-b border-gray-200 shadow-sm">
-    <div class="navpills max-w-4xl mx-auto px-2 flex gap-1 overflow-x-auto whitespace-nowrap py-2 text-sm">
+    <div class="navpills max-w-4xl mx-auto px-3 flex flex-wrap gap-1.5 py-2.5 text-sm">
       <a href="#start" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Start Here</a>
       <a href="#goal" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Goal</a>
       <a href="#targets" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Targets</a>
