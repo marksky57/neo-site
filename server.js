@@ -13,6 +13,18 @@ app.use((req, res, next) => {
   next();
 });
 
+// training.neoatyourservice.com → serve the rep training page at the root.
+// (Self-contained page: Tailwind + fonts via CDN, inline CSS/JS, so no local
+// assets to resolve.) Other paths fall through to static, so /training.html
+// still works on the main domain too.
+app.use((req, res, next) => {
+  const host = (req.headers.host || '').toLowerCase();
+  if (host.startsWith('training.') && (req.path === '/' || req.path === '')) {
+    return res.sendFile(path.join(__dirname, 'training.html'));
+  }
+  next();
+});
+
 // Serve static files (images, audio, etc)
 app.use(express.static(path.join(__dirname)));
 
