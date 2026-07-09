@@ -21,7 +21,7 @@ This file is canonical context for any LLM (Claude, GPT, Cursor, etc.) working o
 **Currently selling: NEO Pro Founders — $59/mo + $0.30/min.**
 
 - No setup fee, no contracts, cancel anytime
-- 30-day money-back guarantee
+- NO advertised money-back guarantee (removed 2026-06-02) — refunds discretionary only; never put guarantee / risk-free / "try it for 30 days" language on the site
 - Locked at this rate forever for first 100 Founders
 
 **Post-Founders: $99/mo + $0.35/min.**
@@ -77,7 +77,7 @@ Tone/idiom can differ; substantive claims cannot.
 ## What NOT to add to marketing copy
 
 - "Calendar booking" — not part of the product (case-by-case manual upsell only). Saying Neo "captures appointment requests" / "takes appointment requests" is fine; saying it "books appointments into your calendar" is not.
-- "Free trial" or "7-day trial" — removed; we charge immediately with 30-day money-back instead
+- "Free trial" or "7-day trial" — removed; we charge immediately. No trial AND no advertised money-back guarantee.
 - "Setup fee" — Founders explicitly waives this; don't reintroduce
 - "Fully autonomous" / "self-learning" / "human replacement" — overclaim, avoid
 - "Standard plan $29" — archived, never reference
