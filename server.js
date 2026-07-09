@@ -38,6 +38,12 @@ app.get('/es', (req, res) => {
   res.sendFile(path.join(__dirname, 'index_es.html'));
 });
 
+// /training → rep training center (clean URL, no subdomain needed — avoids
+// Railway's custom-domain plan limit). Works at neoatyourservice.com/training.
+app.get('/training', (req, res) => {
+  res.sendFile(path.join(__dirname, 'training.html'));
+});
+
 // /checkout → proxy to backend checkout form
 app.get('/checkout', (req, res) => {
   const plan = req.query.plan || 'standard';
