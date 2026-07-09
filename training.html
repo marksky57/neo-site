@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neo Cold Calling Training Center</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Training playbook for reps helping small businesses stop missing calls with Neo at Your Service.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f59e0b'/><text y='.9em' font-size='70' x='15' fill='white' font-weight='bold'>N</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: {
+      'playfair': ['"Playfair Display"','serif'], 'source': ['"Source Sans 3"','sans-serif'] } } } };
+  </script>
+  <style>
+    body { font-family: 'Source Sans 3', sans-serif; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    html { scroll-behavior: smooth; }
+    /* land anchors below the two sticky bars */
+    section[id] { scroll-margin-top: 120px; }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+    .acc.open .acc-body { max-height: 400px; }
+    .acc.open .acc-chev { transform: rotate(180deg); }
+    .acc-chev { transition: transform .2s ease; }
+    .navpills::-webkit-scrollbar { height: 0; }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-800">
+
+  <!-- Brand bar -->
+  <header class="bg-[#0d2340] sticky top-0 z-50 border-b border-white/10">
+    <div class="max-w-4xl mx-auto px-4 flex items-center gap-2 h-14">
+      <span class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-sm font-bold text-white">N</span>
+      <span class="text-white font-bold">Neo Cold Calling Training</span>
+    </div>
+  </header>
+
+  <!-- Sticky section nav (horizontal scroll) -->
+  <nav class="bg-white sticky top-14 z-40 border-b border-gray-200 shadow-sm">
+    <div class="navpills max-w-4xl mx-auto px-2 flex gap-1 overflow-x-auto whitespace-nowrap py-2 text-sm">
+      <a href="#start" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Start Here</a>
+      <a href="#goal" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Goal</a>
+      <a href="#main" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Main Script</a>
+      <a href="#short" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Short Script</a>
+      <a href="#gatekeeper" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Gatekeeper</a>
+      <a href="#discovery" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Discovery</a>
+      <a href="#pitch" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Simple Pitch</a>
+      <a href="#pricing" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Pricing</a>
+      <a href="#objections" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Objections</a>
+      <a href="#closing" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Closing</a>
+      <a href="#roleplay" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Roleplay</a>
+      <a href="#scorecard" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Scorecard</a>
+      <a href="#rules" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-amber-100 hover:text-amber-800 no-underline">Do / Don't</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="bg-gradient-to-b from-[#0d2340] to-[#13315c] text-white">
+    <div class="max-w-4xl mx-auto px-5 py-12 text-center">
+      <h1 class="font-playfair text-3xl sm:text-4xl font-bold mb-3">Neo Cold Calling Training Center</h1>
+      <p class="text-lg text-slate-200 max-w-2xl mx-auto">A simple playbook for helping small businesses stop missing calls with Neo at Your Service.</p>
+      <p class="mt-5 inline-block bg-amber-500/15 border border-amber-400/40 text-amber-200 rounded-lg px-4 py-2 text-sm">
+        You are not selling AI. You are helping small businesses answer calls they are already missing.
+      </p>
+    </div>
+  </div>
+
+  <main class="max-w-4xl mx-auto px-5 py-8 space-y-10">
+
+    <!-- 1. Start Here -->
+    <section id="start">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Start Here</h2>
+      <p class="mb-3">Your job is <strong>not</strong> to sell complicated AI technology. Your job is to help the owner see a simple problem: when they're busy, on a job, driving, closed, or helping another customer, incoming calls may go unanswered. <strong>Neo helps catch those calls.</strong></p>
+      <div class="bg-white rounded-xl border border-gray-200 p-5">
+        <p class="font-semibold text-[#0d2340] mb-2">Key positioning</p>
+        <ul class="list-disc pl-5 space-y-1 text-slate-700">
+          <li>Neo is a <strong>bilingual AI receptionist</strong> — answers 24/7.</li>
+          <li>It captures the caller's <strong>name, phone number, and what they need</strong>, then sends the owner the details.</li>
+          <li>Great for <strong>overflow, after-hours, spam filtering, and Spanish-speaking callers</strong>.</li>
+          <li>It is <strong>not</strong> a human employee and <strong>not</strong> a magic replacement for staff.</li>
+          <li>It's a simple <strong>missed-call safety net</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 2. Goal -->
+    <section id="goal">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Goal of the Call</h2>
+      <p class="mb-3">The goal is to get <strong>one clear next step</strong> — nothing more.</p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div class="bg-white rounded-xl border border-gray-200 p-4">
+          <p class="font-semibold text-[#0d2340] mb-2">Preferred outcomes</p>
+          <ol class="list-decimal pl-5 space-y-1 text-slate-700">
+            <li>Permission to send the demo link.</li>
+            <li>Permission to speak with the owner.</li>
+            <li>A short follow-up call.</li>
+            <li>Interest in trying Neo.</li>
+          </ol>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-200 p-4">
+          <p class="font-semibold text-[#0d2340] mb-2">Rules</p>
+          <ul class="list-disc pl-5 space-y-1 text-slate-700">
+            <li>Don't pressure. Don't argue. Don't overexplain.</li>
+            <li>Ask simple questions. Listen to the answer.</li>
+            <li>Ask for one clear next step.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Main Script -->
+    <section id="main">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Main Cold Call Script</h2>
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="flex justify-between items-center bg-[#0d2340] px-4 py-2">
+          <span class="text-white text-sm font-semibold">Full opener</span>
+          <button onclick="copyScript(this)" class="copy-btn bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold px-3 py-1.5 rounded">Copy Script</button>
+        </div>
+        <div class="script-body p-4 whitespace-pre-line leading-relaxed text-slate-700">Hi, this is Mark Antonowsky with Clearline Answering Services.
+
+I know I'm calling out of the blue, so I'll be brief.
+
+Am I speaking with the owner?
+
+When you're busy, on a job, or after hours, who answers your phone?
+
+[Let them answer.]
+
+That's exactly why I'm calling.
+
+We built Neo at Your Service, a bilingual AI receptionist that answers calls 24/7, captures the customer's name, phone number, and what they need, then sends you the details.
+
+It's mainly for small businesses that don't want missed calls going to voicemail or to the next company.
+
+For our first 100 businesses, it's $59 a month plus usage — no contract, cancel anytime.
+
+Would it be okay if I sent you a quick demo so you can hear what it sounds like?</div>
+      </div>
+    </section>
+
+    <!-- 4. Short Script -->
+    <section id="short">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Short Script</h2>
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="flex justify-between items-center bg-[#0d2340] px-4 py-2">
+          <span class="text-white text-sm font-semibold">Quick version</span>
+          <button onclick="copyScript(this)" class="copy-btn bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold px-3 py-1.5 rounded">Copy Script</button>
+        </div>
+        <div class="script-body p-4 whitespace-pre-line leading-relaxed text-slate-700">Hi, this is Mark Antonowsky with Clearline Answering Services.
+
+I know I'm calling out of the blue — I'll be quick.
+
+When you miss a call because you're busy, on a job, or after hours, does that usually go to voicemail?
+
+[Let them answer.]
+
+That's what we help with.
+
+Neo at Your Service is a bilingual AI receptionist that answers calls, filters out junk, captures the customer's info, and texts you the details.
+
+It's $59 a month for our first 100 businesses — no contract.
+
+Can I send you a quick demo so you can hear it?</div>
+      </div>
+    </section>
+
+    <!-- 5. Gatekeeper -->
+    <section id="gatekeeper">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Gatekeeper Script</h2>
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="flex justify-between items-center bg-[#0d2340] px-4 py-2">
+          <span class="text-white text-sm font-semibold">Getting to the owner</span>
+          <button onclick="copyScript(this)" class="copy-btn bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold px-3 py-1.5 rounded">Copy Script</button>
+        </div>
+        <div class="script-body p-4 whitespace-pre-line leading-relaxed text-slate-700">Hi, this is Mark Antonowsky with Clearline Answering Services.
+
+I'm trying to reach the owner or whoever handles incoming calls for the business.
+
+We help small businesses answer missed calls with a bilingual AI receptionist.
+
+Who would be the best person to speak with about that?</div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3 mt-3">
+        <div class="bg-amber-50 rounded-xl border border-amber-200 p-4">
+          <p class="font-semibold text-amber-800 mb-1">If they ask "What is this about?"</p>
+          <p class="text-slate-700 italic">"It's about helping the business answer calls when everyone is busy, after hours, or when Spanish-speaking callers come in."</p>
+        </div>
+        <div class="bg-amber-50 rounded-xl border border-amber-200 p-4">
+          <p class="font-semibold text-amber-800 mb-1">If the owner is unavailable</p>
+          <p class="text-slate-700 italic">"No problem. What's the best way to send them a quick demo?"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Discovery -->
+    <section id="discovery">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Discovery Questions</h2>
+      <p class="mb-3 text-slate-600">Use only <strong>2 or 3</strong> per call. Ask, then listen.</p>
+      <div class="bg-white rounded-xl border border-gray-200 p-5">
+        <ul class="list-disc pl-5 space-y-1.5 text-slate-700">
+          <li>When you're on a job or tied up, who answers your phone?</li>
+          <li>When you miss a call, does it usually go to voicemail?</li>
+          <li>Do you ever lose jobs because you couldn't answer fast enough?</li>
+          <li>Do you get many Spanish-speaking callers?</li>
+          <li>Do calls after 5&nbsp;PM or on weekends go to voicemail?</li>
+          <li>Do you get a lot of spam or price-shoppers?</li>
+          <li>What is one new customer worth to you?</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 7. Simple Pitch -->
+    <section id="pitch">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Simple Pitch</h2>
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="flex justify-between items-center bg-[#0d2340] px-4 py-2">
+          <span class="text-white text-sm font-semibold">Plain-English explanation</span>
+          <button onclick="copyScript(this)" class="copy-btn bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold px-3 py-1.5 rounded">Copy Script</button>
+        </div>
+        <div class="script-body p-4 whitespace-pre-line leading-relaxed text-slate-700">That makes sense.
+
+Neo is basically a 24/7 bilingual receptionist for small businesses. It answers the call, asks the right questions, captures the caller's name, phone number, and what they need, and sends you the details.
+
+So instead of a potential customer hitting voicemail or calling the next company, at least the call gets answered and captured.
+
+It's $59 a month for our first 100 businesses, plus call usage — no contract, so you can cancel anytime if it's not helping.</div>
+      </div>
+    </section>
+
+    <!-- 8. Pricing -->
+    <section id="pricing">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Pricing</h2>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div class="bg-white rounded-xl border-2 border-amber-400 p-5">
+          <p class="text-amber-700 font-semibold text-sm uppercase tracking-wide">Founders offer — first 100</p>
+          <p class="text-2xl font-bold text-[#0d2340] mt-1">$59<span class="text-base font-normal">/month</span></p>
+          <p class="text-slate-600">+ $0.30 / minute</p>
+        </div>
+        <div class="bg-white rounded-xl border border-gray-200 p-5">
+          <p class="text-slate-500 font-semibold text-sm uppercase tracking-wide">Later / public</p>
+          <p class="text-2xl font-bold text-slate-700 mt-1">$99<span class="text-base font-normal">/month</span></p>
+          <p class="text-slate-600">+ $0.35 / minute</p>
+        </div>
+      </div>
+      <p class="mt-3 text-slate-700"><strong>No contract — cancel anytime.</strong></p>
+      <div class="bg-amber-50 rounded-xl border border-amber-200 p-4 mt-3">
+        <p class="font-semibold text-amber-800 mb-1">How to say it</p>
+        <p class="text-slate-700 italic">"For the first 100 businesses, it's $59 a month plus 30 cents a minute. After that, it'll be $99 a month. There's no contract — so the idea is simple: try it, and if it doesn't help, cancel."</p>
+      </div>
+    </section>
+
+    <!-- 9. Objections -->
+    <section id="objections">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Objections</h2>
+      <p class="mb-3 text-slate-600">Tap to open. Keep responses short — never argue.</p>
+      <div id="acc-list" class="space-y-2"></div>
+    </section>
+
+    <!-- 10. Closing -->
+    <section id="closing">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Closing Lines</h2>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div class="bg-white rounded-xl border border-gray-200 p-4"><p class="font-semibold text-[#0d2340]">Demo close</p><p class="text-slate-700 italic">"Can I text you the demo link?"</p></div>
+        <div class="bg-white rounded-xl border border-gray-200 p-4"><p class="font-semibold text-[#0d2340]">Permission close</p><p class="text-slate-700 italic">"What's the best number to send it to?"</p></div>
+        <div class="bg-white rounded-xl border border-gray-200 p-4"><p class="font-semibold text-[#0d2340]">Website close</p><p class="text-slate-700 italic">"You can hear it at NeoAtYourService.com. Would it be okay if I sent you the link?"</p></div>
+        <div class="bg-white rounded-xl border border-gray-200 p-4"><p class="font-semibold text-[#0d2340]">Trial close</p><p class="text-slate-700 italic">"Would you be open to trying it and just seeing if it catches calls you're missing?"</p></div>
+        <div class="bg-white rounded-xl border border-gray-200 p-4 sm:col-span-2"><p class="font-semibold text-[#0d2340]">Value close</p><p class="text-slate-700 italic">"If Neo catches even one job you would've missed, it probably pays for itself. Want to give it a try?"</p></div>
+      </div>
+    </section>
+
+    <!-- 11. Roleplay -->
+    <section id="roleplay">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Roleplay Practice</h2>
+      <p class="mb-3 text-slate-600">Paste this into ChatGPT (or any AI) and practice until it feels natural.</p>
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div class="flex justify-between items-center bg-[#0d2340] px-4 py-2">
+          <span class="text-white text-sm font-semibold">Roleplay prompt</span>
+          <button onclick="copyScript(this)" class="copy-btn bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold px-3 py-1.5 rounded">Copy Prompt</button>
+        </div>
+        <div class="script-body p-4 whitespace-pre-line leading-relaxed text-slate-700">You are a small business owner receiving a cold call from a salesperson offering an AI receptionist called Neo at Your Service.
+
+Act realistic. Be skeptical but not rude at first. Ask common questions like "How much is it?", "Is this a robot?", "I already have voicemail," "I'm busy," and "Send me info."
+
+The salesperson's goal is not to pressure you. Their goal is to ask what happens to missed calls, explain Neo clearly, and get permission to send a demo link or schedule a short follow-up.
+
+After the roleplay, give the salesperson feedback on:
+1. Whether the opener sounded natural.
+2. Whether they asked good discovery questions.
+3. Whether they explained the product simply.
+4. Whether they handled objections well.
+5. Whether they asked for a clear next step.</div>
+      </div>
+    </section>
+
+    <!-- 12. Scorecard -->
+    <section id="scorecard">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Caller Scorecard</h2>
+      <div class="bg-white rounded-xl border border-gray-200 p-5">
+        <p class="font-semibold text-[#0d2340] mb-3">Did the caller… <span class="text-sm font-normal text-slate-500">(check each)</span></p>
+        <div id="score-list" class="space-y-2"></div>
+        <div class="mt-4 pt-4 border-t border-gray-200 text-sm text-slate-700">
+          <p><span class="font-semibold text-green-700">8–10</span> = Ready &nbsp;·&nbsp; <span class="font-semibold text-amber-700">5–7</span> = Needs more practice &nbsp;·&nbsp; <span class="font-semibold text-red-700">Under 5</span> = Repeat training</p>
+          <p class="mt-2 font-semibold">Score: <span id="score-count">0</span> / 10</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. Do / Don't -->
+    <section id="rules">
+      <h2 class="font-playfair text-2xl font-bold text-[#0d2340] mb-3">Do / Don't Rules</h2>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div class="bg-green-50 rounded-xl border border-green-200 p-5">
+          <p class="font-semibold text-green-800 mb-2">Do</p>
+          <ul class="list-disc pl-5 space-y-1 text-slate-700">
+            <li>Speak slowly. Smile while talking.</li>
+            <li>Ask simple questions. Listen more than you talk.</li>
+            <li>Say "AI receptionist," not "robot."</li>
+            <li>Focus on missed calls.</li>
+            <li>Ask permission to send the demo.</li>
+          </ul>
+        </div>
+        <div class="bg-red-50 rounded-xl border border-red-200 p-5">
+          <p class="font-semibold text-red-800 mb-2">Don't</p>
+          <ul class="list-disc pl-5 space-y-1 text-slate-700">
+            <li>Don't argue or talk too much.</li>
+            <li>Don't promise perfect performance.</li>
+            <li>Don't say Neo is human.</li>
+            <li>Don't claim it fully replaces staff.</li>
+            <li>Don't overpromise appointment booking.</li>
+            <li>Don't pressure the owner.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-[#0d2340] text-slate-300 text-center text-sm py-6 mt-8">
+    Neo at Your Service — internal rep training. Keep it honest, simple, and focused on missed calls.
+  </footer>
+
+  <script>
+    // Copy-to-clipboard for script/prompt cards
+    function copyScript(btn) {
+      var body = btn.closest('section').querySelector('.script-body') ||
+                 btn.closest('.rounded-xl').querySelector('.script-body');
+      var text = body ? body.innerText : '';
+      navigator.clipboard.writeText(text).then(function () {
+        var old = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('bg-green-600'); btn.classList.remove('bg-amber-500');
+        setTimeout(function () { btn.textContent = old; btn.classList.remove('bg-green-600'); btn.classList.add('bg-amber-500'); }, 1500);
+      });
+    }
+
+    // Objections accordion (no dependencies)
+    var objections = [
+      ["I'm not interested.", "No problem. Before I let you go — is it because you already have calls covered, or because missed calls aren't really a problem for you? (If firm: “Fair enough, I appreciate your time.”)"],
+      ["I already have voicemail.", "That makes sense. The only issue is a lot of callers don't leave messages anymore — they just call the next company. Neo gives them an answer right away and captures their info."],
+      ["I already have someone answering.", "Perfect — then Neo may not be for your main hours. A lot of owners use it as backup for overflow, after-hours, weekends, or Spanish calls. Do any of those come up for you?"],
+      ["How much is it?", "For the first 100 businesses, it's $59 a month plus 30 cents a minute. After that, it'll be $99 a month. No contract — so the idea is simple: try it, and if it doesn't help, cancel."],
+      ["Is this a robot?", "It's an AI receptionist. It sounds natural, answers in English or Spanish, and its job is to capture the caller's information and send it to you. It's not pretending to be human — it's there to make sure calls don't get missed."],
+      ["Can it book appointments?", "It can collect the customer's preferred time and details. For the early version we keep it simple and reliable: answer, qualify, capture, and notify you."],
+      ["I don't need AI.", "Totally understand. Most owners don't wake up wanting AI — they just don't want to miss calls. Neo is a low-cost way to make sure someone answers."],
+      ["Send me info.", "Sure — I'll send the demo link. Just so I send the right thing: are you more concerned about missed calls, after-hours calls, Spanish calls, or spam calls?"]
+    ];
+    var accList = document.getElementById('acc-list');
+    objections.forEach(function (o) {
+      var d = document.createElement('div');
+      d.className = 'acc bg-white rounded-xl border border-gray-200 overflow-hidden';
+      d.innerHTML =
+        '<button class="w-full flex justify-between items-center text-left px-4 py-3 font-semibold text-[#0d2340]">' +
+          '<span>' + o[0] + '</span>' +
+          '<span class="acc-chev text-amber-500">&#9662;</span>' +
+        '</button>' +
+        '<div class="acc-body"><p class="px-4 pb-4 text-slate-700 italic">' + o[1] + '</p></div>';
+      d.querySelector('button').addEventListener('click', function () { d.classList.toggle('open'); });
+      accList.appendChild(d);
+    });
+
+    // Scorecard checklist
+    var items = ["Sound natural?","Ask for the owner?","Ask what happens to missed calls?","Let the prospect talk?","Explain Neo in plain English?","Mention bilingual answering?","Mention $59/month correctly?","Ask to send the demo?","Avoid arguing?","Avoid overexplaining AI?"];
+    var scoreList = document.getElementById('score-list');
+    var countEl = document.getElementById('score-count');
+    items.forEach(function (label, i) {
+      var row = document.createElement('label');
+      row.className = 'flex items-center gap-3 cursor-pointer text-slate-700';
+      row.innerHTML = '<input type="checkbox" class="w-5 h-5 accent-amber-500"> <span>' + label + '</span>';
+      row.querySelector('input').addEventListener('change', function () {
+        var n = scoreList.querySelectorAll('input:checked').length;
+        countEl.textContent = n;
+        countEl.className = n >= 8 ? 'text-green-700 font-bold' : (n >= 5 ? 'text-amber-700 font-bold' : 'text-red-700 font-bold');
+      });
+      scoreList.appendChild(row);
+    });
+  </script>
+</body>
+</html>
