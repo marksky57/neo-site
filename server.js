@@ -50,6 +50,12 @@ app.get('/apply', (req, res) => {
   res.sendFile(path.join(__dirname, 'apply.html'));
 });
 
+// /salestools → ready-to-order sales tools (door hangers, magnets, riders…),
+// each "Order yours" button pointing at the Sovrn affiliate link.
+app.get('/salestools', (req, res) => {
+  res.sendFile(path.join(__dirname, 'salestools.html'));
+});
+
 // /checkout → proxy to backend checkout form
 app.get('/checkout', (req, res) => {
   const plan = req.query.plan || 'standard';
