@@ -44,6 +44,12 @@ app.get('/training', (req, res) => {
   res.sendFile(path.join(__dirname, 'training.html'));
 });
 
+// /apply → remote phone-rep application form. Submits to the backend, which
+// dials the applicant back with the Interview Assistant for a screening call.
+app.get('/apply', (req, res) => {
+  res.sendFile(path.join(__dirname, 'apply.html'));
+});
+
 // /checkout → proxy to backend checkout form
 app.get('/checkout', (req, res) => {
   const plan = req.query.plan || 'standard';
