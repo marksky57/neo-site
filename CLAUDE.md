@@ -1,101 +1,106 @@
-# Neo At Your Service — Marketing Site
+# NEO, At Your Service — Marketing Site
 
-Static site at https://www.neoatyourservice.com — landing pages, pricing, legal pages. Deployed on Railway.
+Static marketing site for Neo, the AI receptionist. Deployed on Railway at **neoatyourservice.com**.
 
-This file is canonical context for any LLM (Claude, GPT, Cursor, etc.) working on this repo. Read it first.
+The backend (checkout, provisioning, voice assistants, billing) lives in the separate **`neo-backend`** repo. That repo's `CLAUDE.md` is canonical for how the product actually works — this file covers the site only.
 
----
-
-## Pages
-
-- `index.html` — English homepage
-- `index_es.html` — Spanish homepage (must stay in parity with EN)
-- `pro-plan.html` — Founders detail page (linked from "Learn more" on homepage)
-- `privacy-policy.html`, `terms-of-service.html`, `sms-messaging-policy.html` — legal
-- `audio/voice-*.mp3` — voice samples for the 5 ElevenLabs voices
+**Rewritten 2026-07-28.** The previous version described a pricing regime replaced twice over ($59/mo Founders + $0.30/min, a `FOUNDERS_REMAINING` counter, and a raw Stripe Payment Link as the $99 path). None of it exists. Anything on the site matching that description is a leftover and should be removed.
 
 ---
 
-## Pricing regime (canonical — must match neo-backend/CLAUDE.md)
+## Pricing (canonical — matches what the system actually bills)
 
-**Currently selling: NEO Pro Founders — $59/mo + $0.30/min.**
+**$99 to get started. $99/month. Includes 100 minutes. $0.39/minute after that.**
 
-- No setup fee, no contracts, cancel anytime
-- NO advertised money-back guarantee (removed 2026-06-02) — refunds discretionary only; never put guarantee / risk-free / "try it for 30 days" language on the site
-- Locked at this rate forever for first 100 Founders
+- No setup fee, no contract, cancel anytime
+- Included minutes **do not roll over** — each cycle starts fresh at 100
+- **No proration** — customers get the full 100 minutes regardless of signup date
+- **Calls of 15 seconds or less are never billed** and don't consume included minutes
+- This is the **only** price shown anywhere public
 
-**Post-Founders: $99/mo + $0.35/min.**
+The allowance lives in a tiered Stripe price (0–100 min at $0.00, then $0.39), not in code.
 
-- Already shown as the white "Get Started — $99/mo" fallback button on homepage + es page
-- Wired to Stripe Payment Link `4gMcN560u089cP8adG2wU08`
-
-**Founders counter:** hardcoded JS constant `FOUNDERS_REMAINING = 90` (intentional tripwire — when it hits 0, the Founders banner/card hides automatically and only the $99 path shows). Update this manually as actual signups accrue.
+### Retired — never reintroduce
+- **$59/mo "Founders" pricing** and any "locked for life" language. A private discounted price still exists as a hand-out tool, but it must never appear on a public page — **including in HTML comments**, since page source is public.
+- **Any spots counter** (`FOUNDERS_REMAINING` or similar).
+- **$0.40/min and $0.35/min.** Both dead. $0.35 was never live and survived only in the Terms of Service until 2026-07-28.
+- **"2 months free" / promo codes.** Never appeared in site copy; keep it that way.
 
 ---
 
-## CTA URL conventions
+## Positioning
 
-| Button | URL |
+**Lead with the outcome, not the technology.** Contractors buy answered calls and more jobs — not AI.
+
+Primary themes:
+- Never miss another lead
+- Every call answered. Every lead captured.
+- Built for contractors and small businesses
+- Simple pricing · No contracts · No bloat · Everything you need, nothing you don't
+- Professional call handling without the overhead of a receptionist
+- English and Spanish automatically — never lose a lead to language
+
+**Don't lead a headline or section header with "AI assistant" / "AI receptionist."** Neo *is* one and saying so plainly is fine, but it isn't the hook. The missed job is the hook.
+
+The strongest line on the page is *"Every missed call is a missed job that goes straight to your competitor."* Keep it prominent.
+
+**Don't oversell it either.** Neo is not a human employee and not a replacement for staff. It also isn't merely a missed-call safety net — it works every call live. Land on "every call answered and every lead worked."
+
+---
+
+## ⛔ Claims that must NOT appear (not backed by the product)
+
+All of these were live until 2026-07-28 and were removed because nothing implements them. **Do not reintroduce any without checking `neo-backend` first.**
+
+| Claim | Reality |
 |---|---|
-| Founders ($59) — homepage, ES, pro-plan | `https://neo-backend-production-dbd6.up.railway.app/checkout?plan=pro` |
-| Standard ($99) — homepage, ES | `https://buy.stripe.com/4gMcN560u089cP8adG2wU08` (Stripe Payment Link) |
+| "Spam filtering", "~99% of spam filtered/never billed", "blocks spam" | **No spam filtering exists in any layer.** No pre-answer screening, no Twilio add-on, no reputation check, no classifier. The honest version is: *calls under 15 seconds are never billed.* |
+| "NEO handles calls **or texts**" | The SMS webhook handles STOP/START opt-out keywords **only**. Neo does not read, answer, or capture anything from an inbound customer text. |
+| "Calendar & appointment booking" | Manual, case-by-case, $100 setup fee. Not self-serve, not automatic. |
+| "Website AI chat widget" | Does not exist. |
+| "Outbound reminder & follow-up calls" | Outbound exists for prospecting and recruiting, not as a customer feature. |
+| "Extra numbers / multi-location support" | Not built. |
 
-The $59 path is **form-driven** (collects name/biz/phone/industry/city for Twilio area-code provisioning + Vapi assistant config). The $99 path is a **direct Stripe Payment Link** — bypasses the form. When you transition to $99, you'll need to repoint the Founders button to a new form-driven URL.
+**Appointment *request* handling IS real** — Neo captures the caller's preferred time and texts it to the owner and the caller. Say "appointment request", never "books appointments".
 
----
-
-## Spam-claim safeguard
-
-Never say "spam never billed" as an absolute claim. Always qualify with **"~99%"** or **"around 99%"** (Spanish: "aproximadamente el 99%"). This is a legal safeguard — spam filtering is imperfect.
-
-Acceptable phrasings:
-- "Spam filtering — ~99% of junk calls never charged"
-- "Around 99% of spam is filtered and never billed"
-- "Aproximadamente el 99% del spam se filtra y nunca se factura"
+**CRM integration IS real** but manual to set up — a per-customer webhook that pushes captured leads.
 
 ---
 
-## EN/ES parity
+## Files
 
-`index.html` and `index_es.html` must stay aligned in:
-- Pricing (numbers, terms, guarantee language)
-- Feature claims
-- Legal disclosures
-- Spam-safeguard qualifiers
-- CTA URLs
-
-Tone/idiom can differ; substantive claims cannot.
-
----
-
-## Product scope — there is ONE product (changed 2026-05-15 — must match neo-backend/CLAUDE.md)
-
-**There is only ONE product: NEO Pro.** No tiers, no "standard vs pro." The $59/mo Founders price and the post-cap $99/mo price are two *prices* of the same single product, not two products. Never use "standard product / standard plan / standard tier" framing — it implies tiers that don't exist. (The archived $29 "NEO Standard" is dead; never reference it.)
-
-**Live call transfer IS part of the product** — no setup fee, no upsell. Neo recognizes urgent/explicit "connect me" calls and transfers them to the owner's transfer line; if the owner doesn't pick up within ~18s, Neo takes a message and texts the owner. Marketing copy MAY claim emergency/urgent live transfer. Honest framing only: "urgent calls put straight through; if you can't grab it, you get an instant alert" — do NOT promise flawless universal live connection (carrier/Google-Voice realities vary). Calendar booking is NOT part of the product — case-by-case manual upsell only.
-
-## What NOT to add to marketing copy
-
-- "Calendar booking" — not part of the product (case-by-case manual upsell only). Saying Neo "captures appointment requests" / "takes appointment requests" is fine; saying it "books appointments into your calendar" is not.
-- "Free trial" or "7-day trial" — removed; we charge immediately. No trial AND no advertised money-back guarantee.
-- "Setup fee" — Founders explicitly waives this; don't reintroduce
-- "Fully autonomous" / "self-learning" / "human replacement" — overclaim, avoid
-- "Standard plan $29" — archived, never reference
+| File | Purpose |
+|---|---|
+| `index.html` | Homepage — hero, how it works, demo, pricing, Why NEO, FAQ |
+| `index_es.html` | Spanish homepage. **Mirror of `index.html` — any change to one goes in the other in the same pass**, or the two sites quote different prices. |
+| `pro-plan.html` | Plan detail page linked from the homepage |
+| `training.html` | Rep training page (`/training`) — must stay in sync with `SALES-TRAINING.md` in `neo-backend` |
+| `salestools.html` | Door hangers, sign riders, magnets — third-party print-on-demand links, no pricing |
+| `apply.html` | Phone-rep job application → backend `/api/interview/apply` |
+| `setup.html` | Post-signup setup instructions |
+| `terms-of-service.html` / `-es.html`, `privacy-policy.html` / `-es.html`, `sms-messaging-policy.html` / `-es.html` | Legal. **Terms contains pricing — update it whenever pricing changes.** |
+| `heygen-knowledge-base.md` | Source material for avatar videos |
+| `audio/voice-*.mp3` | ElevenLabs voice samples |
+| `website-preview/` | Redirect stub |
 
 ---
 
-## Operational rules
+## Signup flow
 
-- **Push directly to main.** No feature branches, no PRs. `git push origin HEAD:main`.
+All CTAs point at:
+
+```
+https://neo-backend-production-dbd6.up.railway.app/checkout?plan=pro
+```
+
+**⛔ Never link a raw `buy.stripe.com` Payment Link.** Provisioning is gated on intake form data cached under the Checkout Session id. A Payment Link skips `/checkout`, so the customer is **charged and provisioned nothing** — no phone number, no assistant, no welcome email, and no error raised. A live $99 Payment Link was linked from this site until 2026-07-16 for exactly this reason.
+
+---
+
+## Working rules
+
+- **Push directly to `main`.** No feature branches, no PRs. `git push origin HEAD:main`.
 - **Stage explicit paths.** Never `git add -A`.
-- Railway auto-deploys on push to main.
-
----
-
-## Common LLM mistakes to avoid
-
-- Don't update only the English version — always update `index_es.html` to match.
-- Don't reintroduce trial language anywhere.
-- Don't change the Founders CTA URL without coordinating with neo-backend (it expects the form-driven `/checkout?plan=pro` path).
-- Don't make absolute spam claims — always qualify with ~99%.
-- Don't add features to copy that aren't in the product. Calendar booking is still NOT standard (don't claim it). Live call transfer / emergency live routing IS now standard (claiming it is correct — see "Standard product scope").
+- **English and Spanish change together**, always, in the same commit.
+- **Pricing appears in more places than you expect** — homepage card, homepage CTA block, FAQ, `pro-plan.html` (including its `<meta name="description">`, which is what search results show), `training.html`, and the Terms of Service. Grep for the old figure after any change and confirm zero hits.
+- **When pricing or capability changes, update `SALES-TRAINING.md` in `neo-backend` and `training.html` here in the same session.** Reps must never quote something the product doesn't do.
