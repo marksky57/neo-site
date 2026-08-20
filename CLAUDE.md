@@ -44,6 +44,8 @@ Primary themes:
 
 The strongest line on the page is *"Every missed call is a missed job that goes straight to your competitor."* Keep it prominent.
 
+**We are an AI solutions company, not only a phone product** (Mark, 2026-08-20). Neo at $99 is the productized front door; anything beyond it — live call transfer, calendar booking, integrations, bespoke builds — is **custom work we quote**. The homepage carries this as the "Beyond the Phone" section, and the Terms reserve the right to bill approved custom work. This framing is what lets add-ons be charged for rather than promised free in copy.
+
 **Don't oversell it either.** Neo is not a human employee and not a replacement for staff. It also isn't merely a missed-call safety net — it works every call live. Land on "every call answered and every lead worked."
 
 ---
@@ -61,7 +63,7 @@ All of these were live until 2026-07-28 and were removed because nothing impleme
 | "Outbound reminder & follow-up calls" | Outbound exists for prospecting and recruiting, not as a customer feature. |
 | "Extra numbers / multi-location support" | Not built. |
 
-**Appointment *request* handling IS real** — Neo captures the caller's preferred time and texts it to the owner and the caller. Say "appointment request", never "books appointments".
+**Appointment *request* handling IS real** — Neo captures the caller's preferred time and texts it **to the owner**. Say "appointment request", never "books appointments". *(This line used to say "and the caller." No caller-facing SMS exists — every `messages.create` in `services/sms-service.js` targets the owner or a demo prospect. Corrected 2026-08-20.)*
 
 **CRM integration IS real** but manual to set up — a per-customer webhook that pushes captured leads.
 
