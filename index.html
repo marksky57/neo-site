@@ -64,10 +64,11 @@
   .card-hi{box-shadow:0 18px 50px rgba(0,0,0,.35);border-color:rgba(245,158,11,.35)}
   label{display:block;font-size:.86rem;font-weight:700;letter-spacing:.02em;
         color:#b9c6d6;margin:0 0 6px}
-  input,select{width:100%;background:#0a1727;border:1px solid rgba(255,255,255,.16);
+  input,select,textarea{width:100%;background:#0a1727;border:1px solid rgba(255,255,255,.16);
     color:var(--cream);border-radius:9px;padding:13px 14px;font-size:1rem;
     font-family:inherit;margin-bottom:16px}
-  input:focus,select:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:transparent}
+  textarea{resize:vertical;line-height:1.5;min-height:84px}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:transparent}
   .consent{display:flex;gap:10px;align-items:flex-start;margin:4px 0 18px}
   .consent input{width:auto;margin:4px 0 0;flex:none}
   .consent span{font-size:.82rem;line-height:1.5;color:var(--muted)}
@@ -158,6 +159,11 @@
           <option value="callcenter">Call center / phone rep</option>
           <option value="restaurant">Restaurant / food service</option>
         </select>
+
+        <label for="questions">Your own questions <span style="font-weight:400;color:var(--muted-2)">— optional, one per line</span></label>
+        <textarea id="questions" name="questions" rows="3" maxlength="1200"
+          placeholder="Can you work the 6am shift?&#10;Do you have your own transportation?&#10;Do you have a forklift certification?"></textarea>
+        <p class="formnote" style="margin:-8px 0 18px">Leave it blank and Neo uses our template for the role. Add your own and it asks yours instead — which is the point: hear it run your actual job posting.</p>
 
         <div class="consent">
           <input id="consent" type="checkbox" required>
@@ -367,7 +373,8 @@ document.getElementById('demoForm').addEventListener('submit', async function (e
       body: JSON.stringify({
         name: document.getElementById('name').value,
         phone: document.getElementById('phone').value,
-        role: document.getElementById('role').value
+        role: document.getElementById('role').value,
+        questions: document.getElementById('questions').value
       })
     });
     var data = await res.json().catch(function () { return {}; });
