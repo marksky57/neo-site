@@ -56,6 +56,33 @@ app.get('/salestools', (req, res) => {
   res.sendFile(path.join(__dirname, 'salestools.html'));
 });
 
+// /api/demo-interview → forward the homepage "let Neo interview you" form to
+// the backend, which places the call. Proxied rather than redirected because a
+// 302 on a POST is unreliable across browsers, and because keeping it same-
+// origin avoids CORS entirely.
+app.post('/api/demo-interview', express.json(), async (req, res) => {
+  try {
+    const r = await fetch(`${BACKEND_URL}/api/demo-interview`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body || {}),
+    });
+    const body = await r.json().catch(() => ({ ok: false, error: 'Unexpected response.' }));
+    return res.status(r.status).json(body);
+  } catch (err) {
+    console.error('[demo-interview proxy]', err.message);
+    return res.status(502).json({ ok: false, error: 'Could not reach the demo line — try again shortly.' });
+  }
+});
+
+// /receptionist → the previous AI-receptionist homepage. Kept reachable for
+// existing receptionist customers and because Twilio's compliance review has
+// referenced this site. Full pre-pivot site is on the branch
+// archive/receptionist-site-2026-08.
+app.get('/receptionist', (req, res) => {
+  res.sendFile(path.join(__dirname, 'receptionist.html'));
+});
+
 // /checkout → proxy to backend checkout form
 app.get('/checkout', (req, res) => {
   const plan = req.query.plan || 'standard';
